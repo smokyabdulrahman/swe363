@@ -3,7 +3,7 @@ var JwtStrategy = require('passport-jwt').Strategy,
 var opts = {}
 
 //token will be found in request header, in Authorization field
-opts.jwtFromRequest = ExtractJwt.fromAuthHeader();
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt');
 
 //secret key to decrept the token
 opts.secretOrKey = 'secret';

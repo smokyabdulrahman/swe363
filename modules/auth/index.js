@@ -10,5 +10,5 @@ passport.use(jwtStrat);
 //use local strategy
 passport.use(localStrat);
 
-module.exports.authenticateLocal = passport.authenticate('local', { session: false})
-module.exports.authenticateJwt = passport.authenticate('jwt', { session: false})
+exports.authenticateLocal = passport.authenticate('local', { session: false})
+exports.authenticateJwt = passport.authenticate('jwt', { session: false})

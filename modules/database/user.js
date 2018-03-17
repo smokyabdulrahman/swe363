@@ -26,5 +26,12 @@ module.exports = function(sequelize, DataTypes) {
         });
     });
 
+    // Adding instance level methods
+
+    //verifying Password
+    User.prototype.verifyPassword = function(password) {
+        return bcrypt.compare(password, this.password);
+    };
+
     return User;
 }
