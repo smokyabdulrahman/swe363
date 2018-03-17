@@ -1,9 +1,8 @@
 
-var router                              = require('express').Router();
+var router = require('express').Router();
+var userService = require('./../modules/services/user');
+// var token = jwt.sign(user.tokenize(), process.env.SECRET, {expiresIn: tokenTTL});
 
-
-router.get('/', function(req, res){
-    console.log(req,res);
-})
+router.post('/register', userService.register);
 
 module.exports = router;
