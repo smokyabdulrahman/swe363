@@ -1,3 +1,6 @@
+'use strict';
+
+var User = require('./../database').User;
 var JwtStrategy = require('passport-jwt').Strategy,
     ExtractJwt = require('passport-jwt').ExtractJwt;
 var opts = {}
@@ -6,15 +9,12 @@ var opts = {}
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt');
 
 //secret key to decrept the token
-opts.secretOrKey = 'secret';
+opts.secretOrKey = process.env.SECRET;
 
 module.exports.Strategy = new JwtStrategy(opts, function(jwt_payload, done) {
     //we should change this database statement to sql
-    User.findOne({id: jwt_payload.sub}, function(err, user) {
-        //no token or wrong token
-        if (err) {
-            return done(err, false);
-        }
+    User.findById(jwt_payload.id)
+    .then(user => {
         //user exists, go to the next middelware
         if (user) {
             return done(null, user);
@@ -22,7 +22,12 @@ module.exports.Strategy = new JwtStrategy(opts, function(jwt_payload, done) {
         //user does not exist
         else {
             return done(null, false);
-            // or you could create a new account
         }
-    });
+    })
+    .catch( err => {
+        //no token or wrong token
+        if (err) {
+            return done(err, false);
+        }
+    })
 });

@@ -2,8 +2,8 @@ require('dotenv').config();
 var express             = require('express');
 var path                = require('path');
 var bodyParser          = require('body-parser');
-// var passport            = require('passport');
-// var auth                = require('./modules/auth');
+var passport            = require('passport');
+var auth                = require('./modules/auth');
 var db                = require('./modules/database');
 
 var app = express();
@@ -11,6 +11,8 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(passport.initialize());
 
 // app.use(passport.initialize());
 

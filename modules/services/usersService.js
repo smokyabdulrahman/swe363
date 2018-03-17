@@ -20,3 +20,7 @@ exports.signInUser = function (req, res){
     var token = jwt.sign(req.user.dataValues, process.env.SECRET);
     return res.status(200).json({token: token});
 }//End of signInUser.
+
+exports.getSecret = function(req, res){
+    return res.status(200).json({msg: "don't tell anybody without a valid token!"});
+}
