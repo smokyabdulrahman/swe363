@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>USERS (testing)</title>
+</head>
+<body>
+
+    <h1>Users Route</h1>
+
+    <% for (var i in users) { %>
+        <p>
+            ID:     <%= users[i].dataValues.id %>
+            | Name:   <%= users[i].dataValues.name %>
+            | Email:  <%= users[i].dataValues.email %>
+        </p>
+    <% } %>
+    
+</body>
+</html>
