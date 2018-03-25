@@ -9,5 +9,6 @@ var auth = require('./../modules/auth'),
 
 router.post('/register', userService.register);
 router.post('/login', authenticateLocal, userService.signInUser);
-router.get('/secret', authenticateJwt, userService.getSecret)
+router.get('/secret', authenticateJwt, userService.getSecret);
+router.post('/update', authenticateJwt, userService.updateUser);
 module.exports = router;
