@@ -11,4 +11,7 @@ router.post('/register', userService.register);
 router.post('/login', authenticateLocal, userService.signInUser);
 router.get('/secret', authenticateJwt, userService.getSecret);
 router.post('/update', authenticateJwt, userService.updateUser);
+router.post('/profile', authenticateJwt, userService.setProfile);
+router.get('/profile', authenticateJwt, userService.getProfile);
+
 module.exports = router;

@@ -19,6 +19,9 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
+    //profile link
+    User.hasOne(sequelize.models.Profile);
+    
     //hash password before creating
     User.afterValidate((user, options) => {
         return bcrypt.hash(user.password, 10).then( hash => {

@@ -33,3 +33,21 @@ exports.signInUser = function (req, res){
 exports.getSecret = function(req, res){
     return res.status(200).json({msg: "don't tell anybody without a valid token!"});
 }
+
+//get user's profile
+exports.getProfile = async function(req, res){
+    let profile = await userRepo.getUserProfile(req.user.id);
+    return res.json(profile);
+}
+
+//set user's profile
+exports.setProfile = async function(req, res, next){
+    let profile_data = req.body;
+    userRepo.setUserProfile(req.user.id, profile_data, (err, profile) => {
+        if(err || !profile){
+            console.log(err, profile);
+            next(err);
+        }
+        return res.json(profile);
+    });
+}
