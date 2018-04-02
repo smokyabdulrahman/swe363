@@ -5,6 +5,10 @@ function getUserById(id){
     return User.findById(id);
 }
 
+function getProfileById(id){
+    return Profile.findById(id);
+}
+
 exports.registerUser = function(data, cb){
     if(data){
         var user = User.build({
@@ -24,11 +28,12 @@ exports.registerUser = function(data, cb){
 }
 
 exports.setUserProfile = async function(id, data, cb){
-    var user = await getUserById(id);
+    var user = await getUserById(id);    
     var profile = await Profile.build({
         phone: data.phone,
         bio: data.bio,
-        nickname: data.nickname
+        webURL: data.webURL,
+        office: data.office
     });
     user.setProfile(profile).then( profile => {
         cb(null, profile);
@@ -41,6 +46,24 @@ exports.setUserProfile = async function(id, data, cb){
 exports.getUserProfile = async function(id, cb){
     var user = await getUserById(id);
     return await user.getProfile();
+}
+
+exports.updateUserProfile = async function(id, data, cb){
+    var profile = await getProfileById(id);
+    await Profile.update({
+        phone: data.phone,
+        bio: data.bio,
+        webURL: data.webURL,
+        office: data.office
+    }, {where: {
+        UserId: id
+    }})
+    .then(() => {
+        cb(null, profile);
+    })
+    .catch(err => {
+        cb(err, null);
+    });
 }
 
 exports.updateUser = async function(id, data, cb){

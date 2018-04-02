@@ -10,9 +10,12 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        nickname: { //for url
+        webURL: {
             type: DataTypes.STRING,
             unique: true,
+        },
+        office: {
+            type: DataTypes.STRING,
         }
     });
     

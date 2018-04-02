@@ -40,6 +40,17 @@ exports.getProfile = async function(req, res){
     return res.json(profile);
 }
 
+//update user's profile
+exports.updateProfile = async function(req, res){
+    userRepo.updateUserProfile(req.user.id, req.body, (err, profile) => {
+        if(err || !profile){
+            console.log(err, profile);
+            next(err);
+        }
+        return res.json(profile);
+    });
+}
+
 //set user's profile
 exports.setProfile = async function(req, res, next){
     let profile_data = req.body;
@@ -47,7 +58,7 @@ exports.setProfile = async function(req, res, next){
         if(err || !profile){
             console.log(err, profile);
             next(err);
-        }
+        }      
         return res.json(profile);
     });
 }
