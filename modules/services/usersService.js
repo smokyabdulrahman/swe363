@@ -1,4 +1,5 @@
 var HTTPError = require('./../helpers/index').HTTPError;
+var emailHelper = require('./../helpers/emailHelper');
 var userRepo = require('./../repositries/userRepository');
 var jwt = require('jsonwebtoken');
 
@@ -7,6 +8,16 @@ exports.register = function(req, res, next){
     userRepo.registerUser(data, (err,user) => {
         if(err)
             next(err);
+        //send welcoming email
+        const mailOptions = {
+            from: '"Faculty Portofolio Sys Support" <welcome@kfupm.edu.sa>',
+            to: data.email,
+            subject: 'Welcome to KFUPM Faculty Portofolio Sys',
+            text: `Hello ${data.name},
+            We are happy to have you in our system.
+            Best regards,`
+        }
+        emailHelper.sendEmail(mailOptions);
         return res.status(200).end();
     });
 }
