@@ -51,7 +51,6 @@ exports.getUserProfile = async function(id, cb){
 }
 
 exports.updateUserProfile = async function(id, data, cb){
-    var profile = await getProfileById(id);
     await Profile.update({
         phone: data.phone,
         bio: data.bio,
@@ -60,7 +59,7 @@ exports.updateUserProfile = async function(id, data, cb){
     }, {where: {
         UserId: id
     }})
-    .then(() => {
+    .then(profile => {
         cb(null, profile);
     })
     .catch(err => {

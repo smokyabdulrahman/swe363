@@ -9,6 +9,7 @@ var auth = require('./../modules/auth'),
 
 router.post('/login', authenticateLocal, usersService.signInUser);
 router.get('/secret', authenticateJwt, isAdmin, adminsService.getSecret);
-router.get('/pending/profiles', authenticateJwt, isAdmin, adminsService.getProfileRequests);
+router.get('/profiles/pending', authenticateJwt, isAdmin, adminsService.getProfileRequests);
+router.put('/profiles/approve', authenticateJwt, isAdmin, adminsService.approveProfile);
 
 module.exports = router;
