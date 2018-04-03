@@ -74,3 +74,4 @@ typings/
 .next
 
 package-lock.json
+modules/database/config.json
