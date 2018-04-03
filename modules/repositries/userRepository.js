@@ -1,5 +1,6 @@
 var User = require('./../database').User;
 var Profile = require('./../database').Profile;
+var HTTPError = require('./../helpers/index').HTTPError;
 
 function getUserById(id){
     return User.findById(id);
@@ -17,13 +18,14 @@ exports.registerUser = function(data, cb){
             password: data.password
         })
         user.save()
-        .then(savedUser => {cb(savedUser)})
+        .then(savedUser => {cb(null,savedUser)})
         .catch( err => {
-            next(err);
+            console.log(err);
+            cb(new HTTPError(400, err.errors[0].message), null);
         });
     }
     else {
-        next(new HTTPError(400, "No user data!"));
+        cb(new HTTPError(400, "No user data!"), null);
     }
 }
 

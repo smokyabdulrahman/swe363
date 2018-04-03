@@ -16,6 +16,11 @@ module.exports = function(sequelize, DataTypes) {
         },
         office: {
             type: DataTypes.STRING,
+        },
+        isApproved: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
         }
     });
     

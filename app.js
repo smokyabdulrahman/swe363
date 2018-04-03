@@ -25,6 +25,8 @@ app.use(function(req, res, next) {
  * Define Main routes of the system.
  */
 app.use("/users", require("./routes/users"));
+app.use("/admins", require("./routes/admins"));
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

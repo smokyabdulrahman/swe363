@@ -4,7 +4,9 @@ var jwt = require('jsonwebtoken');
 
 exports.register = function(req, res, next){
     var data = req.body;
-    userRepo.registerUser(data, user => {
+    userRepo.registerUser(data, (err,user) => {
+        if(err)
+            next(err);
         return res.status(200).end();
     });
 }
