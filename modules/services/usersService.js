@@ -12,6 +12,16 @@ exports.getUsers = function(req, res) {
     });
 }
 
+exports.getUserByID = function(req, res) {
+    let id = req.params.user_id;
+    let users = userRepo.getUserByID(id, function(err, user) {
+        if (err) {
+            return res.json(new HTTPError(400, "User not found!")); 
+        }
+        return res.json(user)
+    });
+}
+
 exports.register = function(req, res, next){
     var data = req.body;
     userRepo.registerUser(data, (err,user) => {

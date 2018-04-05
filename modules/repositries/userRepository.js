@@ -24,6 +24,24 @@ exports.getAllUsers = function(cb){
     });
 }
 
+exports.getUserByID = function(id, cb){
+    // let user = getUserById(id);
+    User.findOne({
+        where: {
+            id: id
+        },
+        attributes: {
+            exclude: ['updatedAt', 'isAdmin', 'password']
+        }
+    })
+    .then(user => {
+        cb(null, user);
+    })
+    .catch(err => {
+        cb(err, null);
+    });
+}
+
 exports.registerUser = function(data, cb){
     if(data){
         var user = User.build({
