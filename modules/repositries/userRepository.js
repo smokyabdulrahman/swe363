@@ -10,6 +10,20 @@ function getProfileById(id){
     return Profile.findById(id);
 }
 
+exports.getAllUsers = function(cb){
+    User.findAll({
+        attributes: { 
+            exclude: ['updatedAt', 'isAdmin', 'password']
+        }
+    })
+    .then(users => {
+        cb(null, users);
+    })
+    .catch(err => {
+        cb(err, null);
+    });
+}
+
 exports.registerUser = function(data, cb){
     if(data){
         var user = User.build({

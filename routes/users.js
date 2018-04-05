@@ -7,6 +7,8 @@ var auth = require('./../modules/auth'),
 
 // var token = jwt.sign(user.tokenize(), process.env.SECRET, {expiresIn: tokenTTL});
 
+router.get('/', userService.getUsers);
+
 router.post('/register', userService.register);
 router.post('/login', authenticateLocal, userService.signInUser);
 router.get('/secret', authenticateJwt, userService.getSecret);

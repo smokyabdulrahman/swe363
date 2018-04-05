@@ -3,6 +3,15 @@ var emailHelper = require('./../helpers/emailHelper');
 var userRepo = require('./../repositries/userRepository');
 var jwt = require('jsonwebtoken');
 
+exports.getUsers = function(req, res) {
+    let users = userRepo.getAllUsers(function(err, users) {
+        if (err) {
+            return res.json(new HTTPError(400, "Couldn't retrieve users!"));            
+        }
+        return res.json(users)
+    });
+}
+
 exports.register = function(req, res, next){
     var data = req.body;
     userRepo.registerUser(data, (err,user) => {
