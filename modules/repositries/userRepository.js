@@ -59,8 +59,8 @@ exports.updateUserProfile = async function(id, data, cb){
     }, {where: {
         UserId: id
     }})
-    .then(profile => {
-        cb(null, profile);
+    .then(() => {
+        cb(null, data);
     })
     .catch(err => {
         cb(err, null);

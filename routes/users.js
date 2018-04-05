@@ -14,6 +14,6 @@ router.post('/update', authenticateJwt, userService.updateUser);
 
 router.post('/profile', authenticateJwt, userService.setProfile);
 router.get('/profile', authenticateJwt, userService.getProfile);
-router.post('/profileUpdate', authenticateJwt, userService.updateProfile);
+router.put('/profile', authenticateJwt, userService.updateProfile);
 
 module.exports = router;
