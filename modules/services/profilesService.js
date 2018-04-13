@@ -8,7 +8,6 @@ var jwt = require('jsonwebtoken');
 exports.setPublication = async function(req, res, next){
     let profile = await userRepo.getUserProfile(req.user.id);
     let publication_data = req.body;
-
     profileRepo.setProfilePublication(profile.id, publication_data, (err, publication) => {
         if(err || !publication){
             console.log(err, publication);

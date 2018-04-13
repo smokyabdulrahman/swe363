@@ -48,10 +48,10 @@ sequelize.models.Publication.belongsTo(sequelize.models.Profile, {
   foreignKey: 'ProfileId'
 });
 
-// db.sequelize.sync({
-//   force: true,
-// }).then(function() {
-//   console.log("synced db")
-// });
+db.sequelize.sync({
+  // force: true,
+}).then(function() {
+  console.log("synced db")
+});
 
 module.exports = db;

@@ -21,18 +21,8 @@ exports.updateProfile = function(userId, profileNewData){
 
 exports.setProfilePublication = async function(id, data, cb){
     var profile = await getProfileById(id);
-     
-    //console.log(profile.getPublications());
-
-    var publication = await Publication.build({
-        author: data.author,
-        address: data.address,
-        booktitle: data.booktitle,
-        school: data.school
-    });
-    profile.addPublication(publication, {
-        where: {ProfileId: id}
-    }).then( publication => {
+    profile.createPublication(data)
+    .then( publication => {
         cb(null, publication);
     })
     .catch( err => {
