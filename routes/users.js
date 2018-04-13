@@ -7,9 +7,6 @@ var auth = require('./../modules/auth'),
 
 // var token = jwt.sign(user.tokenize(), process.env.SECRET, {expiresIn: tokenTTL});
 
-router.get('/', userService.getUsers);
-router.get('/:user_id', userService.getUserByID);
-
 router.post('/register', userService.register);
 router.post('/login', authenticateLocal, userService.signInUser);
 router.get('/secret', authenticateJwt, userService.getSecret);
@@ -18,5 +15,8 @@ router.post('/update', authenticateJwt, userService.updateUser);
 router.post('/profile', authenticateJwt, userService.setProfile);
 router.get('/profile', authenticateJwt, userService.getProfile);
 router.put('/profile', authenticateJwt, userService.updateProfile);
+
+router.get('/', userService.getUsers);
+router.get('/:user_id', userService.getUserByID);
 
 module.exports = router;
