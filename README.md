@@ -21,3 +21,10 @@ File structure
 4. Helpers: any helper set of methods, static information that is used globally.
 5. Auth: responsible for maintaing Passportjs library for authenticating users.
 6. Routes: each route file is responsible for one model, define routes to specific model service to satisfiy user needs.
+
+
+Important Links
+=====
+1. https://github.com/sequelize/sequelize/issues/4282 
+if entery is already there use add[enteryPrimaryKey]
+if entery is not yet stored in db use create[enteryData]
