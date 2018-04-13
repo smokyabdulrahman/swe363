@@ -26,6 +26,7 @@ app.use(function(req, res, next) {
  */
 app.use("/users", require("./routes/users"));
 app.use("/admins", require("./routes/admins"));
+app.use("/users/profiles", require("./routes/profiles"));
 
 
 // catch 404 and forward to error handler

@@ -2,7 +2,7 @@
 
 module.exports = function(sequelize, DataTypes) {
     var Publication = sequelize.define('Publication', {
-        auther: {
+        author: {
             type: DataTypes.STRING,
             allowNull: false
         },

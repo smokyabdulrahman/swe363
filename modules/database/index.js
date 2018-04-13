@@ -41,11 +41,11 @@ sequelize.models.User.hasOne(sequelize.models.Profile);
 // linking with publication
 sequelize.models.Profile.hasMany(sequelize.models.Publication, {
   as: 'Publications',
-  foreignKey: 'UserId'
+  foreignKey: 'ProfileId'
 });
 
 sequelize.models.Publication.belongsTo(sequelize.models.Profile, {
-  foreignKey: 'UserId'
+  foreignKey: 'ProfileId'
 });
 
 // db.sequelize.sync({
