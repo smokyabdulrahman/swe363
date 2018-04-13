@@ -23,9 +23,6 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: false
         }
     });
-
-    //profile link
-    User.hasOne(sequelize.models.Profile);
     
     //hash password before creating
     User.afterValidate((user, options) => {

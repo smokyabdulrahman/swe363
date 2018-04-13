@@ -33,6 +33,21 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+// Making models relationships
+
+//profile link
+sequelize.models.User.hasOne(sequelize.models.Profile);
+
+// linking with publication
+sequelize.models.Profile.hasMany(sequelize.models.Publication, {
+  as: 'Publications',
+  foreignKey: 'UserId'
+});
+
+sequelize.models.Publication.belongsTo(sequelize.models.Profile, {
+  foreignKey: 'UserId'
+});
+
 // db.sequelize.sync({
 //   force: true,
 // }).then(function() {
