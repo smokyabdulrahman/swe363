@@ -59,6 +59,8 @@ exports.registerUser = function(data, cb){
 
 exports.setUserProfile = async function(id, data, cb){
     var user = await getUserById(id);    
+    console.log(user);
+    
     var profile = await Profile.build({
         phone: data.phone,
         bio: data.bio,

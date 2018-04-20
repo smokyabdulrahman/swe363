@@ -29,3 +29,8 @@ exports.setProfilePublication = async function(id, data, cb){
         cb(err, null);
     });
 }
+
+exports.getProfilePublications = async function(id, data, cb){
+    var profile = await getProfileById(id);
+    return profile.getPublications();
+}
