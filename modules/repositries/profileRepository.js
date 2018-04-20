@@ -34,3 +34,17 @@ exports.getProfilePublications = async function(id, data, cb){
     var profile = await getProfileById(id);
     return profile.getPublications();
 }
+
+exports.updateProfilePublication = async function(id, data, cb){
+    await Publication.update({
+        ...data
+    }, {where: {
+        id: id
+    }})
+    .then(() => {
+        cb(null, data);
+    })
+    .catch(err => {
+        cb(err, null);
+    });
+}
