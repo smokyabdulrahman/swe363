@@ -29,6 +29,7 @@ app.use("/admins", require("./routes/admins"));
 app.use("/users/profiles", require("./routes/profiles"));
 app.use("/publications", require("./routes/publications"));
 app.use("/workexperiences", require("./routes/workExperiences"));
+app.use("/educations", require("./routes/educations"));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
