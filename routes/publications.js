@@ -10,12 +10,8 @@ router.post('/', authenticateJwt, profilesService.setPublication);
 
 router.put('/:id', authenticateJwt, profilesService.updatePublication);
 
-<<<<<<< HEAD
 router.get('/search/:keyword', profilesService.searchPublication);
-=======
-router.delete('/:id', authenticateJwt, profilesService.deletePublication);
 
-router.get('/search/:keyword', authenticateJwt, profilesService.searchPublication);
->>>>>>> a74e76cf274fb72abf68dc0dd15fc544026ab19c
+router.delete('/:id', authenticateJwt, profilesService.deletePublication);
 
 module.exports = router;
