@@ -13,7 +13,7 @@ exports.build = async function(userId, data){
     return profileRepo.setProfileWorkExperience(profile.id, data);
 }
 
-//build workE
+//update workE
 exports.updateWE = async function(weId, data){
     let we = await getWEById(weId);
     return we.update({...data});

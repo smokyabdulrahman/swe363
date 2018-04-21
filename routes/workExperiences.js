@@ -2,11 +2,7 @@
 var router = require('express').Router();
 var WEService = require('./../modules/services/workExperiencesService');
 var auth = require('./../modules/auth'),
-    authenticateLocal = auth.authenticateLocal,
     authenticateJwt   = auth.authenticateJwt;
-
-// var token = jwt.sign(user.tokenize(), process.env.SECRET, {expiresIn: tokenTTL});
-
 
 /* add work experience */
 router.post("/", authenticateJwt, WEService.addWE);

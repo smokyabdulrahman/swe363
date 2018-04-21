@@ -35,6 +35,11 @@ exports.setProfileWorkExperience = async function(id, data){
     return profile.createWorkExperience(data)
 }
 
+exports.setProfileEducation = async function(id, data){
+    var profile = await getProfileById(id);
+    return profile.createEducation(data)
+}
+
 exports.getProfilePublications = async function(id, data, cb){
     var profile = await getProfileById(id);
     return profile.getPublications();
