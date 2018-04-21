@@ -20,6 +20,32 @@ exports.setPublication = async function(req, res, next){
     });
 }
 
+//get profiles's publications
+exports.getPublications = async function(req, res){
+    let profile = await userRepo.getUserProfile(req.user.id);
+    
+    let publications = await profileRepo.getProfilePublications(profile.id);
+    return res.json(publications);
+}
+
+//get user profiles's publications
+exports.getUserPublications = async function(req, res){
+    let profile = await userRepo.getUserProfile(req.params.id);
+    let publications = await profileRepo.getProfilePublications(profile.id);
+    return res.json(publications);
+}
+
+//update profiles's publication
+exports.updatePublication = async function(req, res){
+    profileRepo.updateProfilePublication(req.params.id, req.body, (err, Publication) => {
+        if(err || !Publication){
+            console.log(err, Publication);
+            next(err);
+        }
+        return res.json(Publication);
+    });
+}
+
 //search publication
 exports.searchPublication = async function(req, res, next){
     let keyword = req.params.keyword;

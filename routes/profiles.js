@@ -5,6 +5,5 @@ var auth = require('./../modules/auth'),
     authenticateLocal = auth.authenticateLocal,
     authenticateJwt   = auth.authenticateJwt;
 
-router.post('/publication', authenticateJwt, profilesService.setPublication);
 
 module.exports = router;
