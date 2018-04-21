@@ -9,6 +9,12 @@ function getProfileById(id){
     return Profile.findById(id);
 }
 
+//delete profile by id
+exports.deleteById = async function(profileId){
+    let profile = await getProfileById(profileId);
+    return profile.destroy();
+}
+
 exports.updateProfile = function(userId, profileNewData){
     return Profile.update({
         ...profileNewData

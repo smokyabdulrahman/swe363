@@ -7,6 +7,40 @@ var publicationRepo = require('./../repositries/publicationRepository');
 
 var jwt = require('jsonwebtoken');
 
+//delete user's profiles
+exports.deleteProfile = async function(req, res){    
+    let profileId = req.params.id;
+    isOwnerOfProfile(req.user.id, profileId).then( _ => {
+        profileRepo.deleteById(profileId)
+        .then(wes => {
+            return res.json(wes);
+        })
+        .catch( err => {
+            console.log(err);
+            return res.status(400).json(err);
+        });
+    })
+    .catch( _ => {
+        return res.json(new HTTPError(400, "You don't have the authority or profile doesn't exists"));
+    })
+}
+
+function isOwnerOfProfile(userId, profileId){
+    return new Promise(async function(resolve, reject) {
+        let user = await userRepo.getUserById(userId);
+        
+        user.getProfile()
+        .then( profile => {
+            if(profile.id == profileId)
+                resolve();
+            reject();
+        })
+        .catch( err => {
+            reject();
+        });
+    });
+}
+
 //set profiles's publication
 exports.setPublication = async function(req, res, next){
     let profile = await userRepo.getUserProfile(req.user.id);

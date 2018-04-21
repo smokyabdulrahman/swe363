@@ -38,6 +38,10 @@ exports.getUserByID = function(id, cb){
     });
 }
 
+exports.getUserById = function(id){
+    return getUserById(id);
+}
+
 exports.registerUser = function(data, cb){
     if(data){
         var user = User.build({
