@@ -46,6 +46,43 @@ exports.updatePublication = async function(req, res){
     });
 }
 
+//delete profiles's publication
+exports.deletePublication = async function(req, res){
+    let publicationId = req.params.id;
+    isOwnerOfPublication(req.user.id, publicationId).then( _ => {
+        publicationRepo.deleteById(publicationId)
+        .then(wes => {
+            return res.json(wes);
+        })
+        .catch( err => {
+            console.log(err);
+            return res.status(400).json(err);
+        });
+    })
+    .catch( _ => {
+        return res.json(new HTTPError(400, "You don't have the authority or publication doesn't exists"));
+    })
+}
+
+function isOwnerOfPublication(userId, publicationId){
+    return new Promise(async function(resolve, reject) {
+        let profile = await userRepo.getUserProfile(userId);
+        profile.getPublications({
+            where: {
+                id: publicationId
+            }
+        })
+        .then( publication => {
+            if(publication.length !== 0)
+                resolve();
+            reject();
+        })
+        .catch( err => {
+            reject();
+        });
+    });
+}
+
 //search publication
 exports.searchPublication = async function(req, res, next){
     let keyword = req.params.keyword;
