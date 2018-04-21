@@ -73,7 +73,7 @@ exports.setUserProfile = async function(id, data, cb){
     });
 }
 
-exports.getUserProfile = async function(id, cb){
+exports.getUserProfile = async function(id){
     var user = await getUserById(id);
     return await user.getProfile();
 }

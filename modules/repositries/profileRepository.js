@@ -29,3 +29,8 @@ exports.setProfilePublication = async function(id, data, cb){
         cb(err, null);
     });
 }
+
+exports.setProfileWorkExperience = async function(id, data){
+    var profile = await getProfileById(id);
+    return profile.createWorkExperience(data)
+}
