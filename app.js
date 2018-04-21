@@ -16,7 +16,7 @@ app.use(passport.initialize());
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Token");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Authorization");
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
   next();
 });
@@ -27,7 +27,8 @@ app.use(function(req, res, next) {
 app.use("/users", require("./routes/users"));
 app.use("/admins", require("./routes/admins"));
 app.use("/users/profiles", require("./routes/profiles"));
-
+app.use("/publications", require("./routes/publications"));
+app.use("/workexperiences", require("./routes/workExperiences"));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
