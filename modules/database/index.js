@@ -58,6 +58,16 @@ sequelize.models.WorkExperience.belongsTo(sequelize.models.Profile, {
   foreignKey: 'ProfileId'
 });
 
+//linking with education
+sequelize.models.Profile.hasMany(sequelize.models.Education, {
+  as: 'Educations',
+  foreignKey: 'ProfileId'
+});
+
+sequelize.models.Education.belongsTo(sequelize.models.Profile, {
+  foreignKey: 'ProfileId'
+});
+
 db.sequelize.sync({
   // force: true,
 }).then(function() {
