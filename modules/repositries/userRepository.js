@@ -6,6 +6,9 @@ function getUserById(id){
     return User.findById(id);
 }
 
+exports.getUsers = function(filters){
+    return User.findAll(filters);
+}
 exports.getAllUsers = function(cb){
     User.findAll({
         attributes: { 

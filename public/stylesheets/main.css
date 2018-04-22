@@ -1,0 +1,153 @@
+/* Sticky footer styles */
+
+html {
+    position: relative;
+    min-height: 100%;
+  }
+  
+  body {
+    margin-bottom: 100px; /* Margin bottom by footer height */
+  }
+  
+  .form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+  
+  .form-signin .checkbox {
+    font-weight: 400;
+  }
+  
+  .form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .form-signin .form-control:focus {
+    z-index: 2;
+  }
+  
+  .form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  
+  .mt {
+    margin-top: 15vh;
+  }
+  
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background-color: #f5f5f5;
+  }
+  
+  .text-muted {
+    line-height: 100px;
+  }
+  
+  .icon-set {
+    float: right;
+    line-height: 80px;
+  }
+  
+  .fa {
+    color: #444;
+    transition: all 0.3s ease;
+  }
+  
+  .icons {
+    flex-direction: row-reverse;
+  }
+  
+  .icons li {
+    display: inline-block;
+    float: right;
+    padding: 10px 10px;
+  }
+  
+  .icons .email:hover a i {
+    color: #000;
+  }
+  
+  .icons .twitter:hover a i {
+    color: #55acee;
+  }
+  
+  .icons .instagram:hover a i {
+    color: #f92556;
+  }
+  
+  .icons .snapchat:hover a i {
+    color: #efea2a;
+  }
+  
+  /* Thumbnail styles */
+  
+  .thumbnail img {
+    width: 100%;
+  }
+  
+  .mian-index-imgs {
+    height: 16rem !important;
+    object-fit: cover;
+  }
+  
+  .thumbnail {
+    padding: 0;
+  }
+  
+  .thumbnail .caption-full {
+    padding: 10px;
+  }
+  
+  .delete-form {
+    display: inline;
+  }
+  
+  .comment-text {
+    display: inline-block;
+    margin: 0;
+  }
+  
+  /* Flexbox grid fix */
+  
+  #map {
+    height: 400px;
+    width: 100%;
+    margin: 10px 0;
+  }
+  
+  .profile {
+    border: 1px solid #656565;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    text-align: left;
+  }
+
+  .profile span {
+    font-weight: bold;
+  }
+
+  .profile .buttons {
+    text-align: right;
+  }
+
+  .approved {
+    background-color: rgba(106, 216, 106, 0.295);
+  }
