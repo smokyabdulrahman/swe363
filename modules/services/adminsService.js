@@ -2,6 +2,7 @@ var HTTPError = require('./../helpers/index').HTTPError;
 var userRepo = require('./../repositries/userRepository');
 var Profile = require('../database').Profile;
 var profileRepo = require('./../repositries/profileRepository');
+var userRepo = require('./../repositries/userRepository');
 
 exports.signInAdmin = function (req, res){
     res.redirect("/admins/panel");
@@ -70,9 +71,32 @@ exports.editProfile = function(req, res, next){
 
     profileRepo.updateProfile(userId, updatedProfileData)
     .then( profile => {
-        return res.status(200).end();
+        return res.redirect("/admins/panel");
     })
     .catch( err => {
         next(err);
     });
+}
+
+exports.addProfile = function(req, res, next){
+    //pass the given profile id to the repositry to update profile
+    const profileData = req.body;
+    const userId = req.params.userId;
+    userRepo.setUserProfile(userId, profileData, (profile, err) => {
+        if(err)
+            next(err);
+        return res.redirect("/admins/panel");
+    });
+}
+
+exports.addUser = function(req, res, next){
+    //pass the given profile id to the repositry to update profile
+    const userData = req.body;
+    userRepo.registerUser(userData, (user, err) => {
+        if(err){
+            console.log(err);
+            next(err);
+        }
+        return res.redirect("/admins/panel");
+    })
 }

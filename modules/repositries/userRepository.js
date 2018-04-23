@@ -48,9 +48,7 @@ exports.getUserById = function(id){
 exports.registerUser = function(data, cb){
     if(data){
         var user = User.build({
-            name: data.name,
-            email: data.email,
-            password: data.password
+            ...data
         })
         user.save()
         .then(savedUser => {cb(null,savedUser)})

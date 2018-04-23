@@ -4,23 +4,29 @@
 
   <div class="row mt">
     <div class="col-md-12 text-center">
+        <button data-toggle="modal" data-target="#addUserModal" class="btn btn-primary">Add new user</button>
         <h3 class="text-left my-2">Profiles: </h3>
         <% users.forEach(user => { %>
-            <div class="profile <% if(user.Profile.isApproved) { %>
-                <%= 'approved' %> <% } %>">
+            <div class="profile <%= user.Profile && user.Profile.isApproved ? 'approved' : '' %>">
                 <span>ID:</span> <%= user.id; %> <br>
                 <span>Name:</span> <%= user.name; %> <br>
-                <span>Phone:</span> <%= user.Profile.phone; %> <br>
-                <span>Bio:</span> <%= user.Profile.bio; %> <br>
-                <span>WebURL:</span> <%= user.Profile.webURL; %> <br>
+                <% if(!user.Profile) { %>
                 <div class="buttons">
-                    <button class="btn btn-warning" data-toggle="modal" data-target="#editModal<%= user.id %>">Edit</button>
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#addModal<%= user.id %>">Add Profile</button>
+                <% } else { %>
+                    <span>Phone:</span> <%= user.Profile.phone; %> <br>
+                    <span>Bio:</span> <%= user.Profile.bio; %> <br>
+                    <span>WebURL:</span> <%= user.Profile.webURL; %> <br>
+                <div class="buttons">
+                    <button class="btn btn-warning" data-toggle="modal" data-target="#editModal<%= user.id %>">Edit Profile</button>
                     <button onclick='approve(<%= user.id %>)' class="btn btn-success">Approve</button>
                     <button onclick="reject(<%= user.id %>)" class="btn btn-danger">Reject</button>
+                <% } %>
                 </div>
             </div>
 
-            <!-- Modal -->
+            <!-- edit Modal -->
+        <% if(user.Profile) { %>
         <div class="modal fade" id="editModal<%= user.id %>" tabindex="-1" role="dialog" aria-labelledby="editModalTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -30,7 +36,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="/admins/profiles/<%= user.id %>/edit" method="POST" target="hiddenFrame">
+                        <form action="/admins/profiles/<%= user.id %>/edit" method="POST">
                         <div class="modal-body">
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Phone</label>
@@ -73,6 +79,105 @@
                     </div>
                 </div>
             </div>
+            <% } else { %>
+            <div class="modal fade" id="addModal<%= user.id %>" tabindex="-1" role="dialog" aria-labelledby="editModalTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalTitle">Edit Profile</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="/admins/profiles/<%= user.id %>/add" method="POST">
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Phone</label>
+                                <div class="col-sm-10">
+                                    <input type="number" 
+                                    name="phone"
+                                    class="form-control" id="inputPhone" placeholder="Phone">
+                                </div>
+                            </div>
+                                
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Bio</label>
+                                <div class="col-sm-10">
+                                    <input type="text"
+                                    name="bio" class="form-control" id="inputBio" placeholder="Bio">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Web URL</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control"
+                                    name="webURL" id="inputWeb URL" placeholder="Web URL">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Office</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputOffice" placeholder="Office">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+            <% } %>
         <%}) %>
     </div>
   </div>
+
+  <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="editModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalTitle">Add new User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="/admins/users/add" method="POST">
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" 
+                            name="name"
+                            class="form-control" placeholder="ex. ali">
+                        </div>
+                    </div>
+                        
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">email</label>
+                        <div class="col-sm-10">
+                            <input type="email"
+                            name="email" class="form-control" placeholder="email@email.com">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">password</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"
+                            name="password" placeholder="$#%@">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Add new User</button>
+                </div>
+            </form>
+
+            </div>
+        </div>
+    </div>

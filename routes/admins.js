@@ -19,5 +19,7 @@ router.get('/profiles/pending', authenticateJwt, isAdmin, adminsService.getProfi
 router.put('/profiles/approve', adminsService.approveProfile);
 router.put('/profiles/reject', adminsService.rejectProfile);
 router.post('/profiles/:userId/edit', adminsService.editProfile);
+router.post('/profiles/:userId/add', adminsService.addProfile);
+router.post('/users/add', adminsService.addUser);
 
 module.exports = router;
