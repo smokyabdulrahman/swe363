@@ -1,0 +1,20 @@
+<% include ../partials/header %>
+
+  <div class="row mt">
+    <div class="col-md-12 text-center">
+      <form action="/users/register" method="post" class="form-signin">
+        <h1 class="h2 mb-3 font-weight-normal">Please enter your information to register</h1>
+        <label for="inputName" class="sr-only">Full Name</label>
+        <input type="text" name="name" id="inputName" class="form-control" placeholder="Name" required autofocus>
+        <label for="inputEmail" class="sr-only">Email</label>
+        <input type="text" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <button class="btn btn-lg btn-success btn-block" type="submit">Register</button>
+        <button class="btn btn-lg btn-warning btn-block" type="reset">Clear</button>
+      </form>
+    </div>
+    <div class="form-signin">
+      <a href="/users/login">Already register? Sign in</a>
+    </div>
+  </div>

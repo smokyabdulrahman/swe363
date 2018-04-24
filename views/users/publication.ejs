@@ -1,0 +1,47 @@
+<% include ../partials/header %>
+
+  <h2>
+    <%= publication.title %>
+  </h2>
+  <p>id:
+    <%=publication.id%>
+  </p>
+  <h4>Publication Details:</h4>
+  <table style="width:100%">
+    <tr>
+      <th>Author:</th>
+      <td>
+        <%= publication.author %>
+      </td>
+    </tr>
+    <tr>
+      <th>Book Title:</th>
+      <td>
+        <%= publication.booktitle %>
+      </td>
+    </tr>
+    <tr>
+      <th>Address:</th>
+      <td>
+        <%= publication.address %>
+      </td>
+    </tr>
+    <tr>
+      <th>School:</th>
+      <td>
+        <%= publication.school %>
+      </td>
+    </tr>
+    <tr>
+      <th>Created At:</th>
+      <td>
+        <%= publication.createdAt %>
+      </td>
+    </tr>
+    <tr>
+      <th>Updated At:</th>
+      <td>
+        <%= publication.updatedAt %>
+      </td>
+    </tr>
+  </table>

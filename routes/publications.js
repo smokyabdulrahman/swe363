@@ -3,8 +3,8 @@ var profilesService = require('./../modules/services/profilesService');
 var auth = require('./../modules/auth'),
     authenticateJwt   = auth.authenticateJwt;
 
-router.get('/', authenticateJwt, profilesService.getPublications);
 router.get('/user/:id', authenticateJwt, profilesService.getUserPublications);
+router.get('/:publicationId', profilesService.getPublication);
 
 router.post('/', authenticateJwt, profilesService.setPublication);
 
