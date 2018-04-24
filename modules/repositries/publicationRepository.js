@@ -25,6 +25,10 @@ function getPublicationById(id){
     return Publication.findById(id);
 }
 
+exports.getById = function(id){
+    return Publication.findById(id);
+}
+
 //delete by id
 exports.deleteById = async function(publicationId){
     let publication = await getPublicationById(publicationId);

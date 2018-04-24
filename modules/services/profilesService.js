@@ -55,11 +55,9 @@ exports.setPublication = async function(req, res, next){
 }
 
 //get profiles's publications
-exports.getPublications = async function(req, res){
-    let profile = await userRepo.getUserProfile(req.user.id);
-    
-    let publications = await profileRepo.getProfilePublications(profile.id);
-    return res.json(publications);
+exports.getPublication = async function(req, res){
+    let publication = await publicationRepo.getById(req.params.publicationId);
+    return res.render("users/publication", {publication: publication});
 }
 
 //get user profiles's publications
