@@ -39,7 +39,7 @@ exports.register = function(req, res, next){
             Best regards,`
         }
         emailHelper.sendEmail(mailOptions);
-        return res.status(200).end();
+        return res.render("users/login");
     });
 }
 

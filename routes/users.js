@@ -10,7 +10,9 @@ var auth = require('./../modules/auth'),
 router.get("/login", (req, res) => {
  res.render("users/login");
 });
-
+router.get("/register", (req, res) => {
+    res.render("users/register");
+});
 router.post('/register', userService.register);
 router.post('/login', authenticateLocal, helpers.exposeUser, userService.signInUser);
 router.get('/secret', authenticateJwt, userService.getSecret);
