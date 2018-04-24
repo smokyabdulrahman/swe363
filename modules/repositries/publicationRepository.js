@@ -14,6 +14,11 @@ exports.search = function(keyword){
                     }
                 },
                 {
+                    title: {
+                    [Op.like]: `%${keyword}%`
+                    }
+                },
+                {
                     booktitle: {
                     [Op.like]: `%${keyword}%`
                     }
