@@ -48,20 +48,6 @@
               <div class="row">
                 <div class="panel panel-default">
                   <div class="panel-body">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <!--/row-->
-                        <!--/panel-body-->
-                        <!--/panel-->
-                      </div>
-                      <!--/col-->
-                    </div>
-                    <!--/row-->
-
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-body">
                     <div class="group">
                       <h3>
                         <span class="fa fa-user"></span> Personal Statement </h3>
@@ -77,6 +63,27 @@
                     <div class="group">
                       <h3>
                         <span class="fa fa-graduation-cap"></span> Education / Certification</h3>
+                      <div class="row">
+                        <div class="col-md-9">
+                          <h4>Title</h4>
+                          <p class="sub">
+                            <a href="#">Description</a>
+                          </p>
+                          <p>Adipiscing elit. Nullam dapibus vehicula condimentum. Curabitur elit enim, accumsan vitae tristique
+                            ut, mollis at orci. Fusce cursus interdum neque nec aliquam. Proin turpis leo, laoreet non ultricies
+                            non, dictum nec nulla.</p>
+                        </div>
+                        <div class="year col-md-3">
+                          <p>MM/DD/YY - MM/DD/YY</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!--Education / Certification  end-->
+
+                    <div class="group">
+                      <h3>
+                        <span class="fa fa-briefcase"></span> Work Highlights</h3>
                       <div class="row">
                         <div class="col-md-9">
                           <h4>Title</h4>
@@ -152,11 +159,38 @@
                         </div>
                         <% }) %>
                     </div>
+<<<<<<< HEAD
+
+                    <!--Job 1 end-->
+=======
+>>>>>>> 33a6fd3397e0e4965552c208a3a90760aee83203
 
                     <!--Job 1 end-->
 
-                    <!--Education & Certification end-->
-
+                    <!-- Publication -->
+                    <div class="group">
+                        <button class="btn btn-primary float-right" data-toggle="modal" data-target="#publicationModal">Add Publication</button>
+                      <h3>
+                        <span class="fa fa-briefcase"></span> Publications </h3>
+                      <% user.Profile.Publications.forEach(function(publication){ %>
+                        <% include ../partials/editPubModal %>
+                        <div class="buttons">
+                            <button class="btn btn-warning" data-toggle="modal" data-target="#editPub<%= publication.id %>">Edit</button>
+                            <button class="btn btn-danger" onclick="deletePublication(<%= publication.id %>, <%= user.id %>)">Delete</button>
+                        </div>
+                        <div class="row groupItem">
+                          <div class="col-md-9">
+                            <h4><%= publication.title %></h4>
+                            <p>Author: <%= publication.author %></p>
+                            <p>Book title: <%= publication.booktitle %></p>
+                          </div>
+                          <div class="year col-md-3">
+                            <p><%= publication.year %> / <%= publication.month %></p>
+                          </div>
+                          <a href="/publications/<%= publication.id %>">More info</a>
+                        </div>
+                        <% }) %>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -200,4 +234,8 @@
     </div>
   </div>
 
+<<<<<<< HEAD
   <% include ../partials/addWorkExperienceModal %>
+=======
+  <% include ../partials/addPublicationModal %>
+>>>>>>> 33a6fd3397e0e4965552c208a3a90760aee83203

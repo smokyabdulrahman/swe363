@@ -4,7 +4,7 @@ var emailHelper = require('./../helpers/emailHelper');
 var userRepo = require('./../repositries/userRepository');
 var profileRepo = require('./../repositries/profileRepository');
 var publicationRepo = require('./../repositries/publicationRepository');
-
+var helpers = require('./../helpers/middlewares');
 var jwt = require('jsonwebtoken');
 
 //delete user's profiles
@@ -43,21 +43,21 @@ function isOwnerOfProfile(userId, profileId){
 
 //set profiles's publication
 exports.setPublication = async function(req, res, next){
-    let profile = await userRepo.getUserProfile(req.user.id);
+    let profile = await userRepo.getUserProfile(helpers.getCurrentUser().id);
     let publication_data = req.body;
     profileRepo.setProfilePublication(profile.id, publication_data, (err, publication) => {
         if(err || !publication){
             console.log(err, publication);
             next(err);
         }      
-        return res.json(publication);
+        return res.redirect('/users/profile');
     });
 }
 
 //get profiles's publications
 exports.getPublication = async function(req, res){
     let publication = await publicationRepo.getById(req.params.publicationId);
-    return res.render("users/publication", {publication: publication});
+    return res.render("users/publication", {publication: publication, currentUser: helpers.getCurrentUser()});
 }
 
 //get user profiles's publications
@@ -74,14 +74,14 @@ exports.updatePublication = async function(req, res){
             console.log(err, Publication);
             next(err);
         }
-        return res.json(Publication);
+        return res.redirect('/users/profile');
     });
 }
 
 //delete profiles's publication
 exports.deletePublication = async function(req, res){
     let publicationId = req.params.id;
-    isOwnerOfPublication(req.user.id, publicationId).then( _ => {
+    isOwnerOfPublication(req.body.id, publicationId).then( _ => {
         publicationRepo.deleteById(publicationId)
         .then(wes => {
             return res.json(wes);
@@ -119,5 +119,5 @@ function isOwnerOfPublication(userId, publicationId){
 exports.searchPublication = async function(req, res, next){
     let keyword = req.params.keyword;
     let publications = await publicationRepo.search(keyword);
-    return res.render("users/search", {publications: publications});
+    return res.render("users/search", {publications: publications, currentUser: helpers.getCurrentUser()});
 }
