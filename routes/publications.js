@@ -6,12 +6,12 @@ var auth = require('./../modules/auth'),
 router.get('/user/:id', authenticateJwt, profilesService.getUserPublications);
 router.get('/:publicationId', profilesService.getPublication);
 
-router.post('/', authenticateJwt, profilesService.setPublication);
+router.post('/', profilesService.setPublication);
 
-router.put('/:id', authenticateJwt, profilesService.updatePublication);
+router.post('/:id', profilesService.updatePublication);
 
 router.get('/search/:keyword', profilesService.searchPublication);
 
-router.delete('/:id', authenticateJwt, profilesService.deletePublication);
+router.delete('/:id', profilesService.deletePublication);
 
 module.exports = router;

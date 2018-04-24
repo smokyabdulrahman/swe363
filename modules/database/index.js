@@ -69,7 +69,7 @@ sequelize.models.Education.belongsTo(sequelize.models.Profile, {
 });
 
 db.sequelize.sync({
-  force: true,
+  // force: true,
 }).then(function() {
   console.log("synced db")
   seed();

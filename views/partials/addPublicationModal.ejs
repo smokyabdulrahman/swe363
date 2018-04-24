@@ -1,8 +1,5 @@
 <!-- Modal Button -->
 
-<button class="btn btn-warning" data-toggle="modal" data-target="#publicationModal">Add Publication</button>
-
-
 <div class="modal fade" id="publicationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -12,6 +9,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form action="/publications/" method="POST">
       <div class="modal-body">
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Author</label>
@@ -46,8 +44,10 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
+    </form>
+
     </div>
   </div>
 </div>

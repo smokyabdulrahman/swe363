@@ -23,7 +23,18 @@ function reject(id){
         location.reload();
       })
 }
-
+function deletePublication(id, userId){
+  $.ajax({
+    type: 'DELETE', 
+    url: '/publications/'+id, 
+    data: {
+      id: userId
+    },
+  }).done(function(res) {
+    console.log(res);
+    location.reload();
+  })
+}
 // function edit(id){
 //     $.ajax({
 //         type: 'PUT', 
