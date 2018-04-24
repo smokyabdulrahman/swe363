@@ -4,7 +4,9 @@
 
   <div class="row mt">
     <div class="col-md-12 text-center">
-        <button data-toggle="modal" data-target="#addUserModal" class="btn btn-primary">Add new user</button>
+        <div class="text-right">
+            <button data-toggle="modal" data-target="#addUserModal" class="btn btn-primary">Add new user</button>
+        </div>
         <h3 class="text-left my-2">Profiles: </h3>
         <% users.forEach(user => { %>
             <div class="profile <%= user.Profile && user.Profile.isApproved ? 'approved' : '' %>">

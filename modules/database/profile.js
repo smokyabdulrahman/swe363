@@ -3,7 +3,7 @@
 module.exports = function(sequelize, DataTypes) {
     var Profile = sequelize.define('Profile', {
         phone: {
-            type: DataTypes.SMALLINT, //16-bit integer
+            type: DataTypes.INTEGER, //16-bit integer
             unique: true
         },
         bio: {

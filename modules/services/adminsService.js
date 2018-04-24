@@ -3,11 +3,11 @@ var userRepo = require('./../repositries/userRepository');
 var Profile = require('../database').Profile;
 var profileRepo = require('./../repositries/profileRepository');
 var userRepo = require('./../repositries/userRepository');
-var user;
+var helpers = require('../helpers/middlewares');
 
-exports.signInAdmin = function (req, res){    
+exports.signInAdmin = function (req, res){
     res.redirect("/admins/panel");
-    user = res.locals.currentUser;
+    helpers.setCurrentUser(res.locals.currentUser);    
 }//End of signInUser.
 
 exports.getSecret = function(req, res){
@@ -20,9 +20,7 @@ exports.getSecret = function(req, res){
 }
 
 exports.getProfileRequests = function(req, res, next){
-    //get all profiles where isApproved is false
-    console.log(user);
-    
+    //get all profiles where isApproved is false    
     const filters = {
         attributes: { 
             exclude: ['createdAt','updatedAt']
@@ -33,7 +31,7 @@ exports.getProfileRequests = function(req, res, next){
     }
     //return to admin the result
     userRepo.getUsers(filters).then( users => {
-        return res.render("admins/panel", {users: users, currentUser: user});
+        return res.render("admins/panel", {users: users, currentUser: helpers.getCurrentUser()});
     })
     .catch( err => {
         next(err)
@@ -106,7 +104,12 @@ exports.addUser = function(req, res, next){
 }
 
 exports.logout = function(req, res, next){
-    user = null;
+    let user = helpers.getCurrentUser();;
+    if(user.isAdmin)
+        res.redirect("/admins/login");
+    else
+        res.redirect("/users/login");
+    
+    helpers.setCurrentUser(null);
     req.logout();
-    res.redirect("/admins/login");
 }

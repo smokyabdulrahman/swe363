@@ -151,3 +151,17 @@ html {
   .approved {
     background-color: rgba(106, 216, 106, 0.295);
   }
+
+  .group {
+    margin: 75px 0;
+    border: 1px solid #bfbfbf;
+    padding: 30px;
+    border-radius: 10px;
+  }
+  .display-4 {
+    text-transform: uppercase;
+  }
+
+  .jumbotron p {
+    margin: 5px 0;
+  }

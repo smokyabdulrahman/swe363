@@ -2,7 +2,8 @@ var HTTPError = require('./../helpers/index').HTTPError;
 var emailHelper = require('./../helpers/emailHelper');
 var userRepo = require('./../repositries/userRepository');
 var jwt = require('jsonwebtoken');
-var user;
+var helpers = require('../helpers/middlewares');
+var db = require('./../database');
 
 exports.getUsers = function(req, res) {
     let users = userRepo.getAllUsers(function(err, users) {
@@ -59,7 +60,7 @@ exports.updateUser = function(req, res, next){
 exports.signInUser = function (req, res){
     //Sign the user to be used as access token.
     //generate token and return it to him.
-    user = res.locals.currentUser;
+    helpers.setCurrentUser(res.locals.currentUser);
     return res.redirect("/users/profile");
 }//End of signInUser.
 
@@ -80,9 +81,41 @@ exports.setProfile = async function(req, res, next){
 }
 
 //get user's profile
-exports.getProfile = async function(req, res){
-    let profile = await userRepo.getUserProfile(user.id);
-    return res.render('users/profile', {profile: profile, currentUser: user});
+exports.getProfile = async function(req, res, next){
+    //get all profiles where isApproved is false    
+    const filters = {
+        attributes: { 
+            exclude: ['createdAt','updatedAt']
+        },
+        include: [{
+            model: db.Profile,
+            include: [{
+                model: db.Publication,
+                as: 'Publications'
+            }, {
+                model: db.WorkExperience,
+                as: 'WorkExperiences'
+            }, {
+                model: db.Education,
+                as: 'Educations'
+            }]
+        }],
+        where: {
+            id: helpers.getCurrentUser().id
+        }
+    }
+    //return to admin the result
+    userRepo.getUsers(filters).then( user => {
+        return res.render("users/profile", {user: user[0], currentUser: helpers.getCurrentUser()});
+    })
+    .catch( err => {
+        next(err)
+    });
+
+    
+    // let user = helpers.getCurrentUser();
+    // let profile = await userRepo.getUserProfile(user.id);
+    // return res.render('users/profile', {profile: profile, currentUser: user});
 }
 
 //update user's profile
