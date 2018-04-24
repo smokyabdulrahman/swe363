@@ -2,6 +2,7 @@ var HTTPError = require('./../helpers/index').HTTPError;
 var emailHelper = require('./../helpers/emailHelper');
 var userRepo = require('./../repositries/userRepository');
 var jwt = require('jsonwebtoken');
+var user;
 
 exports.getUsers = function(req, res) {
     let users = userRepo.getAllUsers(function(err, users) {
@@ -58,8 +59,8 @@ exports.updateUser = function(req, res, next){
 exports.signInUser = function (req, res){
     //Sign the user to be used as access token.
     //generate token and return it to him.
-    var token = jwt.sign(req.user.dataValues, process.env.SECRET);
-    return res.status(200).json({token: token});
+    user = res.locals.currentUser;
+    return res.redirect("/users/profile");
 }//End of signInUser.
 
 exports.getSecret = function(req, res){
@@ -80,8 +81,8 @@ exports.setProfile = async function(req, res, next){
 
 //get user's profile
 exports.getProfile = async function(req, res){
-    let profile = await userRepo.getUserProfile(req.user.id);
-    return res.json(profile);
+    let profile = await userRepo.getUserProfile(user.id);
+    return res.render('users/profile', {profile: profile, currentUser: user});
 }
 
 //update user's profile

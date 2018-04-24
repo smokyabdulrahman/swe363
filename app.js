@@ -5,9 +5,22 @@ var bodyParser          = require('body-parser');
 var passport            = require('passport');
 var auth                = require('./modules/auth');
 var db                  = require('./modules/database');
+var User                = db.User;
 
 var app = express();
 
+app.use(require("express-session")({
+  secret: "demoapp",
+  resave: false,
+  saveUninitialized: false
+}));
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,13 +34,14 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(function(req,res,next){
+  res.locals.currentUser = req.user;
+  next();
+})
+
 // ejs view engine
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
-app.use((req, res, next) => {
-  res.locals.currentUser = req.user;  
-  next();
-});
 
 /**
  * Define Main routes of the system.
