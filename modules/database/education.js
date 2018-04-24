@@ -13,6 +13,9 @@ module.exports = function(sequelize, DataTypes) {
         gpa: {
             type: DataTypes.STRING,
         },
+        description: {
+            type: DataTypes.STRING
+        },
         date: {
             type: DataTypes.DATE,
         },

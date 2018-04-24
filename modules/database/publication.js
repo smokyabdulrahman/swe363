@@ -13,6 +13,24 @@ module.exports = function(sequelize, DataTypes) {
         address: {
             type: DataTypes.STRING,
         },
+        edition: {
+            type: DataTypes.STRING,
+        },
+        journnal: {
+            type: DataTypes.STRING,
+        },
+        month: {
+            type: DataTypes.INTEGER,
+        },
+        pages: {
+            type: DataTypes.INTEGER,
+        },
+        publisher: {
+            type: DataTypes.STRING,
+        },
+        year: {
+            type: DataTypes.INTEGER,
+        },
         booktitle: {
             type: DataTypes.STRING,
         },

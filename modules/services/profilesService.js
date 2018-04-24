@@ -121,5 +121,5 @@ function isOwnerOfPublication(userId, publicationId){
 exports.searchPublication = async function(req, res, next){
     let keyword = req.params.keyword;
     let publications = await publicationRepo.search(keyword);
-    return res.json(publications);
+    return res.render("users/search", {publications: publications});
 }

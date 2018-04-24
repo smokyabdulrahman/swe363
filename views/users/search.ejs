@@ -1,0 +1,11 @@
+<% include ../partials/header %>
+
+<% publications.forEach(function(publication) { %>
+    <div class="card">
+    <div class="card-body">
+        <h5 class="card-title"><%= publication.title %></h5>
+        <h6 class="card-subtitle mb-2">Author: <%= publication.author %></h6>
+        <a href="/publications/<%= publication.id %>" class="card-link">More info</a>
+    </div>
+    </div> 
+<% }) %>
