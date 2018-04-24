@@ -20,6 +20,7 @@ router.post('/update', authenticateJwt, userService.updateUser);
 
 router.post('/profile', authenticateJwt, userService.setProfile);
 router.get('/profile', userService.getProfile);
+router.get('/profile/:id', userService.getProfileByURL);
 router.put('/profile', authenticateJwt, userService.updateProfile);
 
 router.get('/', userService.getUsers);

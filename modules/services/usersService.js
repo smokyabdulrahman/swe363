@@ -118,6 +118,37 @@ exports.getProfile = async function(req, res, next){
     // return res.render('users/profile', {profile: profile, currentUser: user});
 }
 
+exports.getProfileByURL = async function(req, res, next){
+    const filters = {
+        attributes: { 
+            exclude: ['createdAt','updatedAt']
+        },
+        include: [{
+            model: db.Profile,
+            include: [{
+                model: db.Publication,
+                as: 'Publications'
+            }, {
+                model: db.WorkExperience,
+                as: 'WorkExperiences'
+            }, {
+                model: db.Education,
+                as: 'Educations'
+            }]
+        }],
+        where: {
+            id: req.params.id
+        }
+    }
+    //return to admin the result
+    userRepo.getUsers(filters).then( user => {
+        return res.render("users/profile", {user: user[0], currentUser: helpers.getCurrentUser()});
+    })
+    .catch( err => {
+        next(err)
+    });
+}
+
 //update user's profile
 exports.updateProfile = async function(req, res){
     userRepo.updateUserProfile(req.user.id, req.body, (err, profile) => {

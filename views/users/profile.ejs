@@ -138,7 +138,7 @@
                         <button class="btn btn-primary float-right" data-toggle="modal" data-target="#publicationModal">Add Publication</button>
                       <h3>
                         <span class="fa fa-briefcase"></span> Publications </h3>
-                      <% user.Profile.Publications.forEach(function(publication){ %>
+                        <% user.Profile.Publications.forEach(function(publication){ %>
                         <% include ../partials/editPubModal %>
                         <div class="buttons">
                             <button class="btn btn-warning" data-toggle="modal" data-target="#editPub<%= publication.id %>">Edit</button>

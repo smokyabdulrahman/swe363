@@ -1,11 +1,7 @@
 <% include ../partials/header %>
-
   <h2>
     <%= publication.title %>
   </h2>
-  <p>id:
-    <%=publication.id%>
-  </p>
   <h4>Publication Details:</h4>
   <table style="width:100%">
     <tr>
@@ -44,4 +40,5 @@
         <%= publication.updatedAt %>
       </td>
     </tr>
+    <a class="btn btn-primary" href="/users/profile/<%= publication.Profile.UserId %>">Go To Author Page</a>
   </table>
