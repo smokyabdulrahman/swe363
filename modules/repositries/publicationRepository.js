@@ -1,4 +1,6 @@
 var Publication = require('./../database').Publication;
+var Profile = require('./../database').Profile;
+
 const Op = require('sequelize').Op;
 
 //search by keyword
@@ -26,7 +28,10 @@ function getPublicationById(id){
 }
 
 exports.getById = function(id){
-    return Publication.findById(id);
+    return Publication.find({
+        where: {id: id},
+        include: [Profile]
+    });
 }
 
 //delete by id
