@@ -1,0 +1,44 @@
+<div class="modal fade" id="editModal<%= edu.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add Educational Background</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="/educations/<%= edu.id %>" method="POST">
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">School</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="school" class="form-control" id="inputSchool" placeholder="school" value="<%= edu.school %>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Major</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="major" class="form-control" id="inputMajor" placeholder="major" value="<%= edu.major %>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">GPA</label>
+                        <div class="col-sm-10">
+                        <input type="number" name="gpa" class="form-control" id="inputGpa" placeholder="gpa" value="<%= edu.gpa %>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Graduation Date</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="date" class="form-control" id="inputDate" placeholder="graduation date" value="<%= edu.date %>">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>

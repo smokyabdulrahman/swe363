@@ -165,3 +165,10 @@ html {
   .jumbotron p {
     margin: 5px 0;
   }
+
+  .groupItem {
+    margin: 25px 0;
+    border: 1px solid #dadada;
+    font-size: 1.2em;
+    padding: 10px;
+  }
