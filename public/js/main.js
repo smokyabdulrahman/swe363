@@ -23,6 +23,27 @@ function reject(id){
         location.reload();
       })
 }
+
+function deleteEdu(id){
+    $.ajax({
+        type: 'DELETE', 
+        url: '/educations/' + id, 
+      }).done(function(res) {
+        console.log(res);
+        location.reload();
+      })
+}
+
+function deleteWork (id){
+  $.ajax({
+    type: 'DELETE', 
+    url: '/workexperiences/'+id, 
+  }).done(function(res) {
+    console.log(res);
+    location.reload();
+  })
+}
+
 function deletePublication(id, userId){
   $.ajax({
     type: 'DELETE', 

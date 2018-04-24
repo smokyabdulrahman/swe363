@@ -5,10 +5,10 @@ var auth = require('./../modules/auth'),
     authenticateJwt   = auth.authenticateJwt;
 
 /* add education */
-router.post("/", authenticateJwt, EService.addE);
+router.post("/", EService.addE);
 
 /* update education by id */
-router.put("/:education_id", authenticateJwt, EService.updateE);
+router.post("/:education_id", EService.updateE);
 
 /* get all educations of caller */
 router.get("/", authenticateJwt, EService.getAll);
@@ -17,6 +17,6 @@ router.get("/", authenticateJwt, EService.getAll);
 router.get("/users/:id", authenticateJwt, EService.getEByUsersId);
 
 /* delete education by id */
-router.delete('/:education_id', authenticateJwt, EService.deleteById);
+router.delete('/:education_id', EService.deleteById);
 
 module.exports = router;

@@ -72,7 +72,7 @@ db.sequelize.sync({
   // force: true,
 }).then(function() {
   console.log("synced db")
-  seed();
+  // seed();
 });
 
 async function seed(){

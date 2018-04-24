@@ -1,11 +1,12 @@
 var HTTPError = require('./../helpers/index').HTTPError;
 var workExperienceRepo = require('./../repositries/workExperienceRepository');
 var userRepo = require('./../repositries/userRepository');
+var helpers = require('./../helpers/middlewares');
 //add workexperience to caller
 exports.addWE = function(req, res, next){
-    workExperienceRepo.build(req.user.id, req.body)
+    workExperienceRepo.build(helpers.getCurrentUser().id, req.body)
     .then( we => {
-        return res.json(we);
+        return res.redirect("/users/profile");
     })
     .catch(err => {
         console.log(err);
@@ -18,7 +19,7 @@ exports.updateWE = function(req, res, next){
     let weId = req.params.workexperience_id;
     workExperienceRepo.updateWE(weId, req.body)
     .then( we => {
-        return res.json(we);
+        return res.redirect("/users/profile");
     })
     .catch(err => {
         return res.json(new HTTPError(400, "missing info"));
@@ -71,7 +72,7 @@ function isOwnerOfPublication(userId, weId){
 //delete work experience by id
 exports.deleteById = async function(req, res, next){
     let workexperience_id = req.params.workexperience_id;
-    isOwnerOfPublication(req.user.id, workexperience_id).then( _ => {
+    isOwnerOfPublication(helpers.getCurrentUser().id, workexperience_id).then( _ => {
         workExperienceRepo.deleteById(workexperience_id)
         .then(wes => {
             return res.json(wes);
