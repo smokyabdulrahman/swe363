@@ -1,0 +1,54 @@
+<!-- Modal Button -->
+<!-- GO F URSELF -->
+<!-- Modal Body -->
+
+<div class="modal fade" id="editWork<%= work.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Work Experience</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/workexperiences/<%= work.id %> p" method="post">
+        <div class="modal-body">
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Company</label>
+            <div class="col-sm-10">
+              <input type="text" name="company" class="form-control" id="inputCompany" placeholder="Company" value="<%= work.company %>">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Position</label>
+            <div class="col-sm-10">
+              <input type="text" name="position" class="form-control" id="inputPosition" placeholder="Position" value="<%= work.position %>">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Information</label>
+            <div class="col-sm-10">
+              <input type="text" name="info" class="form-control" id="inputInfo" placeholder="Information" value="<%= work.info %>">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Start Date</label>
+            <div class="col-sm-10">
+              <input type="date" name="startdate" class="form-control" id="inputStartDate" placeholder="Start Date" value="<%= work.startdate %>">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">End Date</label>
+            <div class="col-sm-10">
+              <input type="date" name="enddate" class="form-control" id="inputEndDate" placeholder="End Date" value=" <%= work.enddate %> ">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

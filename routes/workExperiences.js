@@ -5,10 +5,10 @@ var auth = require('./../modules/auth'),
     authenticateJwt   = auth.authenticateJwt;
 
 /* add work experience */
-router.post("/", authenticateJwt, WEService.addWE);
+router.post("/", WEService.addWE);
 
 /* update work experience */
-router.put("/:workexperience_id", authenticateJwt, WEService.updateWE);
+router.post("/:workexperience_id", WEService.updateWE);
 
 /* get all workexperiences of caller */
 router.get("/", authenticateJwt, WEService.getAll);
@@ -17,6 +17,6 @@ router.get("/", authenticateJwt, WEService.getAll);
 router.get("/users/:id", authenticateJwt, WEService.getWEByUsersId);
 
 /* delete work experience by id */
-router.delete('/:workexperience_id', authenticateJwt, WEService.deleteById);
+router.delete('/:workexperience_id', WEService.deleteById);
 
 module.exports = router;

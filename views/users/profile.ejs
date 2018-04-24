@@ -1,52 +1,69 @@
 <% include ../partials/header %>
 
 
-<div class="container">
-  <div class="box">
-    <div class="row row-offcanvas row-offcanvas-left">
-      <!-- /top nav -->
+  <div class="container">
+    <div class="box">
+      <div class="row row-offcanvas row-offcanvas-left">
+        <!-- /top nav -->
 
-      <div class="padding">
-        <div class="row">
-          <div class="full col-12">
+        <div class="padding">
+          <div class="row">
+            <div class="full col-12">
 
-            <div class="jumbotron">
+              <div class="jumbotron">
                 <div class="row">
                   <div class="col-xs-12 col-sm-4 text-center">
                     <img src="/images/profile.jpg" alt="" class="center-block img-square img-thumbnail img-responsive"> </div>
                   <!--/col-->
                   <div class="col-xs-12 col-sm-8">
-                    <h1 class="display-4"><%= user.name %></h1>
-                    <p><strong>Email: </strong><%= user.email %></p>
-                    <p><strong>Phone: </strong><%= user.Profile.phone %></p>
-                    <p><strong>Web link: </strong><%= user.Profile.webURL %></p>
-                    <p><strong>Office: </strong><%= user.Profile.office %></p>
-                    <p><strong>Biography: </strong><%= user.Profile.bio %></p>
+                    <h1 class="display-4">
+                      <%= user.name %>
+                    </h1>
+                    <p>
+                      <strong>Email: </strong>
+                      <%= user.email %>
+                    </p>
+                    <p>
+                      <strong>Phone: </strong>
+                      <%= user.Profile.phone %>
+                    </p>
+                    <p>
+                      <strong>Web link: </strong>
+                      <%= user.Profile.webURL %>
+                    </p>
+                    <p>
+                      <strong>Office: </strong>
+                      <%= user.Profile.office %>
+                    </p>
+                    <p>
+                      <strong>Biography: </strong>
+                      <%= user.Profile.bio %>
+                    </p>
                   </div>
                   <!--/col-->
                 </div>
-            </div>
-
-            <!-- content -->
-            <div class="row">
-              <div class="panel panel-default">
-                <div class="panel-body">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <!--/row-->
-                      <!--/panel-body-->
-                      <!--/panel-->
-                    </div>
-                    <!--/col-->
-                  </div>
-                  <!--/row-->
-
-                </div>
               </div>
-              <div class="panel panel-default">
-                <div class="panel-body">
-                  <div class="group">
-                    <h3>
+
+              <!-- content -->
+              <div class="row">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <!--/row-->
+                        <!--/panel-body-->
+                        <!--/panel-->
+                      </div>
+                      <!--/col-->
+                    </div>
+                    <!--/row-->
+
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <div class="group">
+                      <h3>
                         <span class="fa fa-user"></span> Personal Statement </h3>
 
                       <p>A passionate, skilled and adaptable UX &amp; UI Designer with experience in implementing and overseeing
@@ -55,60 +72,11 @@
                         and technological landscape. Strong strategic vision; along with the ability to successfully deliver
                         complex solutions.</p>
                       <p class="signature">Vince Nardone</p>
-                  </div>
-
-                  <div class="group">
-                    <h3>
-                      <span class="fa fa-graduation-cap"></span> Education / Certification</h3>
-                    <div class="row">
-                      <div class="col-md-9">
-                        <h4>Title</h4>
-                        <p class="sub">
-                          <a href="#">Description</a>
-                        </p>
-                        <p>Adipiscing elit. Nullam dapibus vehicula condimentum. Curabitur elit enim, accumsan vitae tristique
-                          ut, mollis at orci. Fusce cursus interdum neque nec aliquam. Proin turpis leo, laoreet non ultricies
-                          non, dictum nec nulla.</p>
-                      </div>
-                      <div class="year col-md-3">
-                        <p>MM/DD/YY - MM/DD/YY</p>
-                      </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-9">
-                        <h4>Title</h4>
-                        <p class="sub">
-                          <a href="#">Description</a>
-                        </p>
-                        <p>Adipiscing elit. Nullam dapibus vehicula condimentum. Curabitur elit enim, accumsan vitae tristique
-                          ut, mollis at orci. Fusce cursus interdum neque nec aliquam. Proin turpis leo, laoreet non ultricies
-                          non, dictum nec nulla.</p>
-                      </div>
-                      <div class="year col-md-3">
-                        <p>MM/DD/YY - MM/DD/YY</p>
-                      </div>
-                    </div>
-                  </div>
 
-                  <!--Education / Certification  end-->
-
-                  <div class="group">
-                    <h3>
-                        <span class="fa fa-briefcase"></span> Work Highlights</h3>
-                      <div class="row">
-                        <div class="col-md-9">
-                          <h4>Title</h4>
-                          <p class="sub">
-                            <a href="#">Description</a>
-                          </p>
-                          <p>Adipiscing elit. Nullam dapibus vehicula condimentum. Curabitur elit enim, accumsan vitae tristique
-                            ut, mollis at orci. Fusce cursus interdum neque nec aliquam. Proin turpis leo, laoreet non ultricies
-                            non, dictum nec nulla.</p>
-                        </div>
-                        <div class="year col-md-3">
-                          <p>MM/DD/YY - MM/DD/YY</p>
-                        </div>
-                      </div>
+                    <div class="group">
+                      <h3>
+                        <span class="fa fa-graduation-cap"></span> Education / Certification</h3>
                       <div class="row">
                         <div class="col-md-9">
                           <h4>Title</h4>
@@ -138,50 +106,98 @@
                         </div>
                       </div>
                     </div>
-                    
+
+                    <!--Education / Certification  end-->
+
+                    <div class="group">
+                      <div class="row my-4">
+                        <div class="col-md-10">
+                          <h3>
+                            <span class="fa fa-briefcase"></span>Work Highlights</h3>
+                        </div>
+                        <div class="col-md-2">
+                          <button class="float-right btn btn-warning" data-toggle="modal" data-target="#workExperienceModal">Add Work Experience</button>
+                        </div>
+                      </div>
+                      <% user.Profile.WorkExperiences.forEach(function(work){ %>
+                        <% include ../partials/editWork %>
+                        <div class="row groupItem">
+                          <div class="col-md-7">
+                            <h4>
+                              <%= work.position %>
+                            </h4>
+                            <h5>
+                              At: <%= work.company %>
+                            </h5>
+                            <p class="sub">
+                            </p>
+                            <p>
+                              <%= work.info %>
+                            </p>
+                          </div>
+                          <div class="year col-md-3">
+                            <p>From:
+                              <%= work.startdate %>
+                            </p>
+                            <p>To:
+                              <%= work.enddate %>
+                            </p>
+                          </div>
+                          <div class="col-md-1">
+                            <button class="float-left btn btn-primary full-width" data-toggle="modal" data-target="#editWork<%=work.id%>">Edit</button>
+                          </div>
+                          <div class="col-md-1">
+                            <button class="float-right btn btn-danger" onclick="deleteWork(<%=work.id%>)">Delete</button>
+                          </div>
+                        </div>
+                        <% }) %>
+                    </div>
+
                     <!--Job 1 end-->
 
                     <!--Education & Certification end-->
 
                   </div>
                 </div>
+              </div>
+              <!-- /padding -->
             </div>
-            <!-- /padding -->
+          </div>
+          <!-- /main -->
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+  <!--post modal-->
+  <div id="postModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          Linkedboot Demo
+        </div>
+        <div class="modal-body" style="padding:15px;">
+          <div class="jumbotron">
+            <img src="logo_in_nav_44x36.png">
+            <p class="text-center">
+              <img src="https://static.licdn.com/scds/common/u/images/logos/linkedin/logo_in_nav_44x36.png">
+            </p>
+            <h1 class="text-center">Linkedboot</h1>
+            <p class="text-center">A LinkedIn style template for Bootstrap made by Vince Nardone</p>
+
           </div>
         </div>
-        <!-- /main -->
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-
-
-<!--post modal-->
-<div id="postModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        Linkedboot Demo
-      </div>
-      <div class="modal-body" style="padding:15px;">
-        <div class="jumbotron">
-          <img src="logo_in_nav_44x36.png">
-          <p class="text-center">
-            <img src="https://static.licdn.com/scds/common/u/images/logos/linkedin/logo_in_nav_44x36.png">
-          </p>
-          <h1 class="text-center">Linkedboot</h1>
-          <p class="text-center">A LinkedIn style template for Bootstrap made by Vince Nardone</p>
-
-        </div>
-      </div>
-      <div class="modal-footer">
-        <div>
-          <button class="btn btn-default btn-sm" data-dismiss="modal" aria-hidden="true">OK</button>
+        <div class="modal-footer">
+          <div>
+            <button class="btn btn-default btn-sm" data-dismiss="modal" aria-hidden="true">OK</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+  <% include ../partials/addWorkExperienceModal %>

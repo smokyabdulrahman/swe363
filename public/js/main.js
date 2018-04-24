@@ -24,6 +24,16 @@ function reject(id){
       })
 }
 
+function deleteWork (id){
+  $.ajax({
+    type: 'DELETE', 
+    url: '/workexperiences/'+id, 
+  }).done(function(res) {
+    console.log(res);
+    location.reload();
+  })
+}
+
 // function edit(id){
 //     $.ajax({
 //         type: 'PUT', 
