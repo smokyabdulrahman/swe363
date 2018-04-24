@@ -30,29 +30,29 @@
             <a class="nav-link" href="#">Home</a>
           </li>
         </ul>
+        <form class="form-inline search-bar" action="/publications/search/" method="get">
+          <input class="form-control mr-sm-2 search-input" name="keyword" type="search" id="header-search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <ul class="navbar-nav ">
+          <% if(typeof currentUser == 'undefined'){ %>
+            <li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
+              <a class="nav-link" href="/users/login">Login</a>
+            </li>
+            <li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
+              <a class="nav-link" href="/users/register">Register</a>
+              <% } else { %>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Hello,
+                    <%= currentUser.name %>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/admins/logout">Logout</a>
+                </li>
+            <% } %>
+        </ul>
       </div>
-      <form class="form-inline ml-auto" action="/publications/search/" method="get" style="width:70%">
-        <input style="width:80%" class="form-control mr-sm-2" name="keyword" type="search" id="header-search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-      <ul class="navbar-nav ">
-        <% if(typeof currentUser == 'undefined'){ %>
-          <li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
-            <a class="nav-link" href="/users/login">Login</a>
-          </li>
-          <li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
-            <a class="nav-link" href="/users/register">Register</a>
-            <% } else { %>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Hello,
-                  <%= currentUser.name %>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/admins/logout">Logout</a>
-              </li>
-              <% } %>
-      </ul>
     </div>
   </nav>
 

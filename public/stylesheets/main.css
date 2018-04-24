@@ -172,3 +172,11 @@ html {
     font-size: 1.2em;
     padding: 10px;
   }
+
+  .search-bar {
+    width: 60%;
+  }
+
+  .search-input {
+    width: 80% !important;
+  }
