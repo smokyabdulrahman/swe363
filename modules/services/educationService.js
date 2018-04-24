@@ -1,15 +1,17 @@
 var HTTPError = require('./../helpers/index').HTTPError;
 var educationRepo = require('./../repositries/educationRepository');
 var userRepo = require('./../repositries/userRepository');
+var helpers = require('./../helpers/middlewares');
+
 //add workexperience to caller
 exports.addE = function(req, res, next){
-    educationRepo.build(req.user.id, req.body)
+    educationRepo.build(helpers.getCurrentUser().id, req.body)
     .then( e => {
-        return res.json(e);
+        return res.redirect('/users/profile');
     })
     .catch(err => {
         console.log(err);
-        res.json(new HTTPError(400, "Missing info"));
+        return res.json(err);
     });
 }
 
@@ -18,10 +20,10 @@ exports.updateE = function(req, res, next){
     let eId = req.params.education_id;
     educationRepo.updateWE(eId, req.body)
     .then( e => {
-        return res.json(e);
+        return res.redirect('/users/profile');
     })
     .catch(err => {
-        return res.json(new HTTPError(400, "missing info"));
+        return res.json(err);
     });
 }
 
@@ -71,7 +73,7 @@ function isOwnerOfEducation(userId, eId){
 //delete work experience by id
 exports.deleteById = async function(req, res, next){
     let education_id = req.params.education_id;
-    isOwnerOfEducation(req.user.id, education_id).then( _ => {
+    isOwnerOfEducation(helpers.getCurrentUser().id, education_id).then( _ => {
         educationRepo.deleteById(education_id)
         .then(wes => {
             return res.json(wes);

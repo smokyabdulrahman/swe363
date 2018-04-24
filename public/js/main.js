@@ -24,6 +24,16 @@ function reject(id){
       })
 }
 
+function deleteEdu(id){
+    $.ajax({
+        type: 'DELETE', 
+        url: '/educations/' + id, 
+      }).done(function(res) {
+        console.log(res);
+        location.reload();
+      })
+}
+
 // function edit(id){
 //     $.ajax({
 //         type: 'PUT', 
