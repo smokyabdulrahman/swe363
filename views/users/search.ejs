@@ -6,6 +6,7 @@
         <h5 class="card-title"><%= publication.title %></h5>
         <h6 class="card-subtitle mb-2">Author: <%= publication.author %></h6>
         <a href="/publications/<%= publication.id %>" class="card-link">More info</a>
+        <h6 class="float-right ">Published: <%= publication.month+'/'+publication.year %></h6>
     </div>
     </div> 
 <% }) %>
