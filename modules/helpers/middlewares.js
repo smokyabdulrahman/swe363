@@ -7,3 +7,9 @@ exports.isAdmin = function(req, res, next){
         res.json(new HTTPError(400, "You are not an admin!")).end();
     next();
 }
+
+exports.exposeUser = function(req, res, next) {
+    res.locals.currentUser = req.user;
+    next();
+  };
+  
