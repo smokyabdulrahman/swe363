@@ -71,12 +71,12 @@ exports.getSecret = function(req, res){
 //set user's profile
 exports.setProfile = async function(req, res, next){
     let profile_data = req.body;
-    userRepo.setUserProfile(req.user.id, profile_data, (err, profile) => {
+    userRepo.setUserProfile(helpers.getCurrentUser().id, profile_data, (err, profile) => {
         if(err || !profile){
             console.log(err, profile);
             next(err);
-        }      
-        return res.json(profile);
+        }
+        return res.redirect("/users/profile");
     });
 }
 

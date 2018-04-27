@@ -18,7 +18,7 @@ router.post('/login', authenticateLocal, helpers.exposeUser, userService.signInU
 router.get('/secret', authenticateJwt, userService.getSecret);
 router.post('/update', authenticateJwt, userService.updateUser);
 
-router.post('/profile', authenticateJwt, userService.setProfile);
+router.post('/profile', userService.setProfile);
 router.get('/profile', userService.getProfile);
 router.get('/profile/:id', userService.getProfileByURL);
 router.put('/profile', authenticateJwt, userService.updateProfile);
