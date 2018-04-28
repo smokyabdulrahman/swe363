@@ -45,7 +45,7 @@
                 </div>
               </div>
               <% if(!user.Profile) { %>
-                <% if(user.id == currentUser.id) { %>
+                <% if(currentUser && user.id == currentUser.id) { %>
 
                 <h2>You don't have a profile! add one now:</h2>
                 <form action="profile" method="POST">
@@ -99,7 +99,7 @@
                             </div>
                             <div class="year col-md-3">
                               <p>Graduation Date: <%= edu.date %></p>
-                              <% if(user.id == currentUser.id) { %>
+                              <% if(currentUser && user.id == currentUser.id) { %>
                               <div class="buttons text-right">
                                   <button class="btn btn-warning" data-toggle="modal" data-target="#editModal<%= edu.id %>">Edit</button>
                                   <button onclick="deleteEdu(<%= edu.id %>)" class="btn btn-danger">Delete</button>
@@ -109,7 +109,7 @@
                           </div>
                           <% include ../partials/editEducationalBackgroundModal.ejs %>
                       <% }); %>
-                      <% if(user.id == currentUser.id) { %>
+                      <% if(currentUser && user.id == currentUser.id) { %>
                       <div class="buttons">
                           <button class="btn btn-success" data-toggle="modal" data-target="#educationalBackgroundModal">Add Education / Certification</button>
                       </div>
@@ -150,7 +150,7 @@
                             <p>To:
                               <%= work.enddate %>
                             </p>
-                            <% if(user.id == currentUser.id) { %>
+                            <% if(currentUser && user.id == currentUser.id) { %>
                             <div class="buttons text-right">
                                 <button class="btn btn-warning" data-toggle="modal" data-target="#editWork<%=work.id%>">Edit</button>
                                 <button class="btn btn-danger" onclick="deleteWork(<%=work.id%>)">Delete</button>
@@ -159,7 +159,7 @@
                           </div>
                         </div>
                         <% }) %>
-                        <% if(user.id == currentUser.id) { %>
+                        <% if(currentUser && user.id == currentUser.id) { %>
                         <button class="btn btn-success" data-toggle="modal" data-target="#workExperienceModal">Add Work Experience</button>
                         <% } %>
                     </div>
@@ -179,7 +179,7 @@
                           </div>
                           <div class="year col-md-3">
                             <p class="text-center"><%= publication.year %> / <%= publication.month %></p>
-                            <% if(user.id == currentUser.id) { %>
+                            <% if(currentUser && user.id == currentUser.id) { %>
                             <div class="buttons text-right">
                               <button class="btn btn-warning" data-toggle="modal" data-target="#editPub<%= publication.id %>">Edit</button>
                               <button class="btn btn-danger" onclick="deletePublication(<%= publication.id %>, <%= user.id %>)">Delete</button>
@@ -189,7 +189,7 @@
                           <a class="btn btn-success" href="/publications/<%= publication.id %>">More info</a>
                         </div>
                         <% }) %>
-                        <% if(user.id == currentUser.id) { %>
+                        <% if(currentUser && user.id == currentUser.id) { %>
                         <button class="btn btn-success" data-toggle="modal" data-target="#publicationModal">Add Publication</button> 
                         <% } %>                       
                     </div>
