@@ -1,5 +1,6 @@
 body, html {
   height: 100%;
+  overflow-y: hidden;
 }
 
 .bg { 
@@ -9,39 +10,42 @@ body, html {
   /* Full height */
   height: 100%; 
   width: 100%;
-  /* background-color: red; */
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-.caption{
-  position: absolute;
-  left: 0;
-  top: 30%;
+.mid-panel {
+  margin-top: 200px;
+}
+
+.caption {
   width: 100%;
   text-align: center;
   color: #000;
+  margin-bottom: 50px;
 }
 
-.caption span.border {
-  background-color: #111;
+.caption {
   color: #fff;
-  padding: 18px;
-  font-size: 25px;
-  letter-spacing: 10px;
+  font-size: 2.5em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 0 15px black;
 }
 
-.landing-search-bar{
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-  width: 60%;
-  font-size: 20px;
-  letter-spacing: 8px;
+.landing-search-bar {
+  width: 75%;
   text-align: center;
   color: white;
-  background-color: black;
-  border-color: white;
+  background-color: #0000007a;
+}
+
+.mid-search-bar {
+  width: 100%;
+}
+
+.mid-search-bar input {
+  width: 89% !important;
 }

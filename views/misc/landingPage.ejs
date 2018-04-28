@@ -1,17 +1,22 @@
 <% include ../partials/header %>
   </div>
   <div class="bg">
-    <div class="caption">
-      <span class="border">Welcome to Out Student Portfolio System.</span>
-    </div>
-    <span>
-    <div class="card my-3 landing-search-bar container">
-      <div class="card-body">
-        <h4 class="card-title">Start by searching:</h4>
-        <form class="form-inline search-bar" action="/publications/search/" method="get">
-          <input class="form-control mr-sm-2 search-input" name="keyword" type="search" id="header-search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+    <div class="container">
+      <div class="row">
+        <div class="mid-panel col-12">
+            <div class="caption">
+              <span>Welcome to Out Student Portfolio System.</span>
+            </div>
+              <div class="card my-3 landing-search-bar container">
+                <div class="card-body">
+                  <h4 class="card-title">Start by searching:</h4>
+                  <form class="form-inline mid-search-bar" action="/publications/search/" method="get">
+                    <input class="form-control mr-sm-2" name="keyword" type="search" id="header-search" placeholder="Search by author or title.." aria-label="Search">
+                    <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+                </div>
+              </div>
+          </div>
       </div>
     </div>
-  </span>
+  </div>
