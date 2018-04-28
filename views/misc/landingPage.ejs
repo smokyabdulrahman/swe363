@@ -1,22 +1,84 @@
-<% include ../partials/header %>
-  </div>
-  <div class="bg">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Make site responsive on mobile/tablet -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/main.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/landingPage.css">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <script src="/js/main.js"></script>
+  <title>Portfolio</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <div class="container">
+          <a class="navbar-brand" href="/">PORTFOLIO</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item <%= typeof page !== 'undefined' && page === 'places' ? 'active' : '' %>">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+            </ul>
+            <form class="form-inline search-bar" action="/publications/search/" method="get">
+              <input class="form-control mr-sm-2 search-input" name="keyword" type="search" id="header-search" placeholder="Search by author or title.." aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <ul class="navbar-nav ">
+              <% if(typeof currentUser == 'undefined'){ %>
+                <li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
+                  <a class="nav-link" href="/users/login">Login</a>
+                </li>
+                <li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
+                  <a class="nav-link" href="/users/register">Register</a>
+                  <% } else { %>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Hello,
+                        <%= currentUser.name %>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/admins/logout">Logout</a>
+                    </li>
+                <% } %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+  <div class="bg" style="overflow-y: hidden;">
     <div class="container">
       <div class="row">
         <div class="mid-panel col-12">
-            <div class="caption">
-              <span>Welcome to Out Student Portfolio System.</span>
-            </div>
-              <div class="card my-3 landing-search-bar container">
-                <div class="card-body">
-                  <h4 class="card-title">Start by searching:</h4>
-                  <form class="form-inline mid-search-bar" action="/publications/search/" method="get">
-                    <input class="form-control mr-sm-2" name="keyword" type="search" id="header-search" placeholder="Search by author or title.." aria-label="Search">
-                    <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-                  </form>
-                </div>
-              </div>
+          <div class="caption">
+            <span>Welcome to Our Student Portfolio System.</span>
           </div>
+          <div class="card my-3 landing-search-bar container">
+            <div class="card-body">
+              <h4 class="card-title">Start by searching:</h4>
+              <form class="form-inline mid-search-bar" action="/publications/search/" method="get">
+                <input class="form-control mr-sm-2" name="keyword" type="search" id="header-search" placeholder="Search by author or title.."
+                  aria-label="Search">
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</body>
+
+</html>
