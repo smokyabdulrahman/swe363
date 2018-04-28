@@ -11,7 +11,7 @@ router.post("/", EService.addE);
 router.post("/:education_id", EService.updateE);
 
 /* get all educations of caller */
-router.get("/", authenticateJwt, EService.getAll);
+router.get("/", EService.getAll);
 
 /* get educations of another user */
 router.get("/users/:id", authenticateJwt, EService.getEByUsersId);

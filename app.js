@@ -46,6 +46,9 @@ app.use(express.static(__dirname + "/public"));
 /**
  * Define Main routes of the system.
  */
+app.get("/", (req, res, next) => {
+  return res.render("./misc/landingPage");
+});
 app.use("/users", require("./routes/users"));
 app.use("/admins", require("./routes/admins"));
 app.use("/users/profiles", require("./routes/profiles"));
