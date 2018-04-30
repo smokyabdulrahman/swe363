@@ -41,7 +41,7 @@
                     </p>
                     <% } %>
                     <div class="my-4">
-                        <a href="#" class="btn btn-success  mx-1">Generate CV</a>
+                        <a onclick="createCV()" class="btn btn-success  mx-1">Generate CV</a>
                         <a href="/users/personal-website/<%= user.id %>" class="btn btn-primary  mx-1">Generate Website</a>
                     </div>
                   </div>
@@ -202,6 +202,96 @@
   </div>
   </div>
 
+  <div id="element-to-print" hidden>
+    <div id="cv">
+      <div class="mainDetails">
+        <div id="headshot">
+          <img src="/images/profile.jpg" class="center-block img-square img-thumbnail img-responsive"/>
+        </div>
+        
+        <div id="name">
+          <h1 class="quickFade delayTwo"><%= user.name %></h1>
+        </div>
+        
+        <div id="contactDetails">
+          <ul>
+            <li>e: <a href="mailto:<%= user.email %>" target="_blank"><%= user.email %></a></li>
+            <li>m: <%= user.Profile.phone %></li>
+          </ul>
+        </div>
+        <div class="clear"></div>
+      </div>
+      
+      <div id="mainArea">
+        <section>
+          <article>
+            <div class="sectionTitle">
+              <h1>Bio</h1>
+            </div>
+            
+            <div class="sectionContent">
+              <p><%= user.Profile.bio %></p>
+            </div>
+          </article>
+          <div class="clear"></div>
+        </section>
+        
+        
+        <section>
+          <div class="sectionTitle">
+            <h1>Work Experience</h1>
+          </div>
+          
+          <div class="sectionContent">
+            <% user.Profile.WorkExperiences.forEach(function(work){ %>
+            <article>
+              <h2><%= work.company %> - <%= work.position %></h2>
+              <p class="subDetails"><%= work.startdate %> - <%= work.enddate %></p>
+              <p><%= work.info %></p>
+            </article>
+            <% }) %>
+          </div>
+          <div class="clear"></div>
+        </section>
+        
+        <section>
+          <div class="sectionTitle">
+            <h1>Education</h1>
+          </div>
+          
+          <div class="sectionContent">
+            <% user.Profile.Educations.forEach(function(edu){ %>
+            <article>
+              <h2><%= edu.school %></h2>
+              <p class="subDetails"><%= edu.major %></p>
+              <p><%= edu.gpa %> / 4.00</p>
+              <p>Graduation Date: <%= edu.date %></p>
+            </article>
+            <% }) %>
+          </div>
+          <div class="clear"></div>
+        </section>
+
+        <section>
+          <div class="sectionTitle">
+            <h1>Publications</h1>
+          </div>
+          
+          <div class="sectionContent">
+            <% user.Profile.Publications.forEach(function(publication){ %>
+            <article>
+              <h2><%= publication.title %></h2>
+              <p class="subDetails"><%= publication.booktitle %></p>
+              <p>Author: <%= publication.author %></p>
+              <p><%= publication.year %> / <%= publication.month %></p>
+            </article>
+            <% }) %>
+          </div>
+          <div class="clear"></div>
+        </section>
+      </div>
+    </div>
+  </div>
 <% include ../partials/addEducationalBackgroundModal.ejs %>
 <% include ../partials/addWorkExperienceModal %>
 <% include ../partials/addPublicationModal %>
