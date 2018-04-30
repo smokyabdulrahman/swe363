@@ -69,17 +69,17 @@ sequelize.models.Education.belongsTo(sequelize.models.Profile, {
 });
 
 db.sequelize.sync({
-  // force: true,
+  force: true,
 }).then(function() {
   console.log("synced db")
-  // seed();
+  seed();
 });
 
 async function seed(){
   //admin
   let admin = await sequelize.models.User.build({
-    name: 'khaled',
-    email: 'a@a.com',
+    name: 'Abdulrahman Alrahma',
+    email: 'alrahma@gmail.com',
     password: '123',
     isAdmin: true,
   });
@@ -87,28 +87,28 @@ async function seed(){
   let adminProfile = await sequelize.models.Profile.build({
         phone: '556664054',
         bio: 'I am the best admin in King Fahd University of Petrolium.',
-        webURL: 'khaledAdmin',
+        webURL: 'alrahma.com',
         office: '22-220'
   });
   await admin.setProfile(adminProfile);
 
-  //Ali
-  let ali = await sequelize.models.User.build({
-    name: 'Ali',
-    email: 'ali@a.com',
+  //Ibrahim Alraigi
+  let ibrahim = await sequelize.models.User.build({
+    name: 'Ibrahim Alraigi',
+    email: 'ibrahim@gmail.com',
     password: '123',
   });
-  ali.save();
-  let aliProfile = await sequelize.models.Profile.build({
+  ibrahim.save();
+  let ibrahimProfile = await sequelize.models.Profile.build({
         phone: '593423853',
         bio: 'I am the best publisher in King Fahd University of Petrolium.',
-        webURL: 'ali',
+        webURL: 'ibra7am.com',
         office: '24-220'
   });
-  await ali.setProfile(aliProfile);
+  await ibrahim.setProfile(ibrahimProfile);
   //PUB
-  aliProfile.createPublication({
-    author: "ali moh",
+  ibrahimProfile.createPublication({
+    author: "ibrahim Alraigi",
     title: "Nano technology",
     address: "Riyad, Saudi Arabia",
     edition: "3rd",
@@ -120,9 +120,9 @@ async function seed(){
     booktitle: "The age of technology",
     school: "KFUPM",
   });
-  aliProfile.createPublication({
-    author: "ali moh",
-    title: "Nano technology",
+  ibrahimProfile.createPublication({
+    author: "ibrahim Alraigi",
+    title: "Web Development",
     address: "Riyad, Saudi Arabia",
     edition: "3rd",
     journnal: "IEEE",
@@ -133,9 +133,9 @@ async function seed(){
     booktitle: "The age of technology",
     school: "KFUPM",
   });
-  aliProfile.createPublication({
-    author: "ali moh",
-    title: "Nano technology",
+  ibrahimProfile.createPublication({
+    author: "ibrahim Alraigi",
+    title: "Artificial intelligence will control the world!",
     address: "Riyad, Saudi Arabia",
     edition: "3rd",
     journnal: "IEEE",
@@ -146,9 +146,9 @@ async function seed(){
     booktitle: "The age of technology",
     school: "KFUPM",
   });
-  aliProfile.createPublication({
-    author: "ali moh",
-    title: "Nano technology",
+  ibrahimProfile.createPublication({
+    author: "ibrahim Alraigi",
+    title: "Software Engineering Practices",
     address: "Riyad, Saudi Arabia",
     edition: "3rd",
     journnal: "IEEE",
@@ -160,43 +160,43 @@ async function seed(){
     school: "KFUPM",
   });
   //WORK
-  aliProfile.createWorkExperience({
-    company: "Aqwas",
-    position: "Full stack dev",
+  ibrahimProfile.createWorkExperience({
+    company: "Google",
+    position: "Software Engineer",
     info: "Worked on many projects",
     startdate: (new Date()).toJSON(),
     enddate: (new Date()).toJSON()
   });
-  aliProfile.createWorkExperience({
-    company: "Aqwas",
-    position: "Full stack dev",
+  ibrahimProfile.createWorkExperience({
+    company: "Microsoft",
+    position: "Full-stack developer",
     info: "Worked on many projects",
     startdate: (new Date()).toJSON(),
     enddate: (new Date()).toJSON()
   });
-  aliProfile.createWorkExperience({
-    company: "Aqwas",
-    position: "Full stack dev",
+  ibrahimProfile.createWorkExperience({
+    company: "Facebook",
+    position: "CEO",
     info: "Worked on many projects",
     startdate: (new Date()).toJSON(),
     enddate: (new Date()).toJSON()
   });
   //Edu
-  aliProfile.createEducation({
+  ibrahimProfile.createEducation({
     school: "KFUPM",
-    major: "SWE",
+    major: "Software Engineering (SWE)",
     gpa: "3.5",
     description: "The best school in Saudi Arabia.",
     date: (new Date()).toJSON()
   });
-  aliProfile.createEducation({
-    school: "KFUPM",
-    major: "SWE",
-    gpa: "3.5",
-    description: "The best school in Saudi Arabia.",
+  ibrahimProfile.createEducation({
+    school: "Massachusetts Institute of Technology - MIT",
+    major: "BUSINESS",
+    gpa: "3.9",
+    description: "The best school in U.S.",
     date: (new Date()).toJSON()
   });
-  aliProfile.createEducation({
+  ibrahimProfile.createEducation({
     school: "KFUPM",
     major: "SWE",
     gpa: "3.5",
@@ -220,7 +220,7 @@ async function seed(){
   await moh.setProfile(mohProfile);
   //PUB
   mohProfile.createPublication({
-    author: "ali moh",
+    author: "moh",
     title: "Nano technology",
     address: "Riyad, Saudi Arabia",
     edition: "3rd",
@@ -233,7 +233,7 @@ async function seed(){
     school: "KFUPM",
   });
   mohProfile.createPublication({
-    author: "ali moh",
+    author: "moh",
     title: "Nano technology",
     address: "Riyad, Saudi Arabia",
     edition: "3rd",
@@ -246,7 +246,7 @@ async function seed(){
     school: "KFUPM",
   });
   mohProfile.createPublication({
-    author: "ali moh",
+    author: "moh",
     title: "Nano technology",
     address: "Riyad, Saudi Arabia",
     edition: "3rd",
@@ -259,7 +259,7 @@ async function seed(){
     school: "KFUPM",
   });
   mohProfile.createPublication({
-    author: "ali moh",
+    author: "moh",
     title: "Nano technology",
     address: "Riyad, Saudi Arabia",
     edition: "3rd",

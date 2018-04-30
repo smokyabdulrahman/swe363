@@ -184,3 +184,7 @@ html {
   .search-input {
     width: 80% !important;
   }
+
+  .year p {
+    font-size: 0.9em;
+  }
