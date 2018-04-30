@@ -74,7 +74,7 @@
                   <button type="submit" class="btn btn-primary">Add profile</button>
                 </form>
                 <% } %>
-              <% } else{  %>
+              <% } else if(user.Profile.isApproved == true) {  %>
               <!-- content -->
               <div class="row">
                 <div class="panel panel-default">
@@ -189,6 +189,8 @@
                   </div>
                 </div>
               </div>
+              <% } else { %>
+                <p>Your profile has not yet been approved by the admin, please try accessing it again in a while.</p>
               <% } %>
               <!-- /padding -->
             </div>
