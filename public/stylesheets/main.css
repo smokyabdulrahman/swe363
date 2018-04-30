@@ -8,6 +8,10 @@ html {
   body {
     margin-bottom: 100px; /* Margin bottom by footer height */
   }
+
+  .panel {
+    width: 100%;
+  }
   
   .form-signin {
     width: 100%;

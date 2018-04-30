@@ -110,6 +110,6 @@ exports.logout = function(req, res, next){
     else
         res.redirect("/users/login");
     
-    helpers.setCurrentUser(null);
+    helpers.setCurrentUser(undefined);
     req.logout();
 }
